@@ -3,7 +3,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
@@ -11,16 +11,64 @@ Plug 'junegunn/vim-easy-align'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'lambdalisue/suda.vim'
+Plug 'puremourning/vimspector'
+Plug 'EdenEast/nightfox.nvim'  "theme
 call plug#end()
 
 " ========== my ==========
 set number
-noremap ff :Format<CR>
+set ic
+set pyxversion=3
+set clipboard=unnamedplus
 
-" ========== airline ==========
+" color
+set t_Co=256
+set termguicolors
+syntax enable
+set background=dark
+colorscheme nightfox
+
+" set cursorline
+
+" Tab size
+set expandtab
+set shiftwidth=4
+set tabstop=4
+
+" ========== auto switch im ==========
+autocmd InsertLeave * :silent !fcitx5-remote -c " 退出插入模式时禁用输入法
+autocmd BufCreate *  :silent !fcitx5-remote -c " 创建 Buf 时禁用输入法
+autocmd BufEnter *  :silent !fcitx5-remote -c " 进入 Buf 时禁用输入法
+autocmd BufLeave *  :silent !fcitx5-remote -c " 离开 Buf 时禁用输入法
+
+" ========== plug-config ==========
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" prettier
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+" noremap ff :Format<CR>
+noremap ff :Prettier<CR>
+
+" vimspector
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+
+" airline
 let g:airline_theme='bubblegum'
-" let g:airline_theme='solarized'
-" let g:airline_solarized_bg='light'
+" let g:airline_theme='deus'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -36,7 +84,6 @@ nmap <leader>0 <Plug>AirlineSelectTab0
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 
-" ========== plug-config ==========
 " nerdcommenter
 filetype plugin on
 
@@ -83,6 +130,8 @@ let g:coc_global_extensions = [
 \ 'coc-json',
 \ 'coc-pyright',
 \ 'coc-java',
+\ 'coc-snippets',
+\ 'coc-prettier',
 \ 'coc-marketplace']
 
 " ========== coc.nvim ==========
