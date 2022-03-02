@@ -11,7 +11,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'lambdalisue/suda.vim'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'EdenEast/nightfox.nvim'  "theme
 call plug#end()
 
@@ -68,19 +68,20 @@ nnoremap <Leader>s :call ToggleErrors()<cr>
 
 let g:syntastic_python_checkers=['pyflakes']
 
-" prettier
-command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+" " prettier
+" command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 noremap ff :Format<CR>
-" noremap ff :Prettier<CR>
-
-" vimspector
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-
-" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
+" " noremap ff :Prettier<CR>
+" 
+" " vimspector
+" " let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" let g:vimspector_enable_mappings = 'HUMAN'
+" 
+" " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" " for normal mode - the word under the cursor
+" nmap <Leader>di <Plug>VimspectorBalloonEval
+" " for visual mode, the visually selected text
+" xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " airline
 let g:airline_theme='bubblegum'
@@ -100,9 +101,6 @@ nmap <leader>0 <Plug>AirlineSelectTab0
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
 
-" nerdcommenter
-filetype plugin on
-
 " EasyAlign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
@@ -114,6 +112,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " nerdcommenter
+filetype plugin on
+
 " Create default mappings
 let g:NERDCreateDefaultMappings = 1
 
@@ -147,8 +147,8 @@ let g:coc_global_extensions = [
 \ 'coc-pyright',
 \ 'coc-java',
 \ 'coc-snippets',
-\ 'coc-prettier',
-\ 'coc-marketplace']
+\ 'coc-marketplace',
+\ 'coc-markdownlint']
 
 " ========== coc.nvim ==========
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
