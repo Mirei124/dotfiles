@@ -35,11 +35,36 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
-" ========== auto switch im ==========
-autocmd InsertLeave * :silent !fcitx5-remote -c " 退出插入模式时禁用输入法
-autocmd BufCreate *  :silent !fcitx5-remote -c " 创建 Buf 时禁用输入法
-autocmd BufEnter *  :silent !fcitx5-remote -c " 进入 Buf 时禁用输入法
-autocmd BufLeave *  :silent !fcitx5-remote -c " 离开 Buf 时禁用输入法
+"##### auto fcitx  ###########
+let g:input_toggle = 1
+function! Fcitx2en()
+   let s:input_status = system("fcitx5-remote")
+   if s:input_status == 2
+      let g:input_toggle = 1
+      let l:a = system("fcitx5-remote -c")
+   endif
+endfunction
+
+function! Fcitx2zh()
+   let s:input_status = system("fcitx5-remote")
+   if s:input_status != 2 && g:input_toggle == 1
+      let l:a = system("fcitx5-remote -o")
+      let g:input_toggle = 0
+   endif
+endfunction
+
+set ttimeoutlen=150
+"退出插入模式
+autocmd InsertLeave * call Fcitx2en()
+"进入插入模式
+" autocmd InsertEnter * call Fcitx2zh()
+"##### auto fcitx end ######
+
+" " ========== auto switch im ==========
+" autocmd InsertLeave * :silent !fcitx5-remote -c " 退出插入模式时禁用输入法
+" autocmd BufCreate *  :silent !fcitx5-remote -c " 创建 Buf 时禁用输入法
+" autocmd BufEnter *  :silent !fcitx5-remote -c " 进入 Buf 时禁用输入法
+" autocmd BufLeave *  :silent !fcitx5-remote -c " 离开 Buf 时禁用输入法
 
 " ========== plug-config ==========
 " syntastic
