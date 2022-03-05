@@ -21,6 +21,7 @@ set ignorecase
 set smartcase
 set pyxversion=3
 set clipboard=unnamedplus
+set colorcolumn=81
 
 " color
 set t_Co=256
