@@ -17,7 +17,8 @@ call plug#end()
 
 " ========== my ==========
 set number
-set ic
+set ignorecase
+set smartcase
 set pyxversion=3
 set clipboard=unnamedplus
 
@@ -34,6 +35,7 @@ colorscheme nightfox
 set expandtab
 set shiftwidth=4
 set tabstop=4
+filetype indent on
 
 "##### auto fcitx  ###########
 let g:input_toggle = 1
