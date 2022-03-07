@@ -3,7 +3,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
@@ -22,6 +22,7 @@ set smartcase
 set pyxversion=3
 set clipboard=unnamedplus
 set colorcolumn=81
+set scrolloff=3
 
 " color
 set t_Co=256
@@ -37,6 +38,13 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 filetype indent on
+
+" auro parenthesis completion
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap ' ''<left>
+inoremap " ""<left>
 
 "##### auto fcitx  ###########
 let g:input_toggle = 1
@@ -70,6 +78,9 @@ autocmd InsertLeave * call Fcitx2en()
 " autocmd BufLeave *  :silent !fcitx5-remote -c " 离开 Buf 时禁用输入法
 
 " ========== plug-config ==========
+" suda
+noremap \sw :SudaWrite<CR>
+
 " syntastic
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
@@ -171,6 +182,7 @@ let g:NERDToggleCheckAllLines = 1
 
 " ========== coc-plug ==========
 let g:coc_global_extensions = [
+\ 'coc-clangd',
 \ 'coc-json',
 \ 'coc-pyright',
 \ 'coc-java',
