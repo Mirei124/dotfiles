@@ -7,12 +7,20 @@ bspc monitor -d I II III IV V
 bspc config border_width         0
 bspc config window_gap           6
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.50
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+# bspc config initial_polarity first_child
+# bspc config automatic_scheme spiral
+# bspc config automatic_scheme longest_side
+
 bspc rule -a Gimp desktop='^3' state=floating follow=on
-bspc rule -a Chromium desktop='^2'
+# bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
@@ -20,7 +28,7 @@ bspc rule -a Screenkey manage=off
 xsetroot -cursor_name left_ptr
 # auto start
 $HOME/.config/polybar/forest/launch.sh
-picom &
+picom -b
 feh --bg-fill $HOME/Downloads/julia-shi-final.jpg
 fcitx5 &
 ps aux | grep -v grep | grep care_eye || $HOME/myScript/careEye/start_care_eye.sh

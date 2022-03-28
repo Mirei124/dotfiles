@@ -108,7 +108,7 @@ alias sto="systemctl stop"
 alias tt="tldr -t ocean"
 
 # set proxy
-alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=http://127.0.0.1:7890"
+alias vpn="export http_proxy=socks5://127.0.0.1:7890 && export https_proxy=socks5://127.0.0.1:7890 && export all_proxy=socks5://127.0.0.1:7890"
 alias vst="$HOME/myScript/proxy.sh"
 alias ved="$HOME/myScript/proxy.sh ed"
 

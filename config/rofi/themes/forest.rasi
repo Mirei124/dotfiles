@@ -12,7 +12,7 @@ configuration {
 	font:							"monospace bold 14";
     show-icons:                     true;
 	/* icon-theme: 					"Papirus"; */
-	icon-theme: 					"Tela";
+    icon-theme: 					"Tela";
     display-drun: 					"DESKTOP";
     display-window:                 "WINDOW";
     drun-display-format:            "{name}";

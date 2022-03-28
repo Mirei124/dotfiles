@@ -127,11 +127,11 @@ super + {Left,Down,Up,Right}
 
 # volume control
 XF86AudioLowerVolume
-	amixer set Master 5%-
+	pulseaudio-ctl down
 XF86AudioRaiseVolume
-	amixer set Master 5%+
+	pulseaudio-ctl up
 XF86AudioMute
-        amixer set Master toggle
+    pulseaudio-ctl mute
 
 # brightness control
 XF86MonBrightnessDown
