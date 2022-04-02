@@ -13,8 +13,8 @@ configuration {
     show-icons:                     true;
 	/* icon-theme: 					"Papirus"; */
     icon-theme: 					"Tela";
-    display-drun: 					"DESKTOP";
-    display-window:                 "WINDOW";
+    display-drun: 					" ";
+    display-window:                 "缾";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -39,10 +39,10 @@ window {
 
 prompt {
     enabled: 						true;
-	padding: 						0px;
-	background-color: 				@bga;
-	text-color: 					@ac;
-	font:							"feather 8";
+    padding: 						0px;
+    background-color: 				@bga;
+    text-color: 					@ac;
+    font:							"feather 8";
 }
 
 entry {
@@ -57,7 +57,8 @@ entry {
 }
 
 inputbar {
-	children: 						[ prompt, entry ];
+	/* children: 						[ prompt, entry ]; */
+	children: 						[ entry ];
     background-color:               @bga;
     text-color:                     @fg;
     expand:                         false;

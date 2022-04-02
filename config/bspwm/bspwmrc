@@ -12,7 +12,8 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 # bspc config normal_border_color		      "#579da0"
-bspc config focused_border_color	      "#ac8fd7"
+# bspc config focused_border_color	      "#CE93D8"
+bspc config focused_border_color	      "#ffb0cd"
 
 # bspc config focus_follows_pointer true
 bspc config pointer_modifier mod4
@@ -36,7 +37,6 @@ picom --experimental-backends -b
 feh --bg-fill $HOME/Downloads/julia-shi-final.jpg
 fcitx5 &
 ps aux | grep -v grep | grep care_eye || $HOME/myScript/careEye/start_care_eye.sh
-optimus-manager-qt &
 
 sleep 3
 # Terminate already running klipper instances

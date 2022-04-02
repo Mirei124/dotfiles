@@ -100,31 +100,31 @@ autocmd InsertLeave * call Fcitx2en()
 " suda
 noremap \sw :SudaWrite<CR>
 
-" syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" to see error location list
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_loc_list_height = 5
-function! ToggleErrors()
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$')
-        " Nothing was closed, open syntastic error location panel
-        Errors
-    endif
-endfunction
-nnoremap <Leader>s :call ToggleErrors()<cr>
-" nnoremap <Leader>sn :lnext<cr>
-" nnoremap <Leader>sp :lprevious<cr>
-
-let g:syntastic_python_checkers=['pyflakes']
+" " syntastic
+" " set statusline+=%#warningmsg#
+" " set statusline+=%{SyntasticStatuslineFlag()}
+" " set statusline+=%*
+"
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+"
+" " to see error location list
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_loc_list_height = 5
+" function! ToggleErrors()
+"     let old_last_winnr = winnr('$')
+"     lclose
+"     if old_last_winnr == winnr('$')
+"         " Nothing was closed, open syntastic error location panel
+"         Errors
+"     endif
+" endfunction
+" nnoremap <Leader>s :call ToggleErrors()<cr>
+" " nnoremap <Leader>sn :lnext<cr>
+" " nnoremap <Leader>sp :lprevious<cr>
+"
+" let g:syntastic_python_checkers=['pyflakes']
 
 " " prettier
 " command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
