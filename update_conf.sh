@@ -36,6 +36,9 @@ function add(){
     
     mkdir -p $dest/config/sxhkd
     cp -r $HOME/.config/sxhkd $dest/config/
+
+    mkdir -p $dest/etc/xdg
+    cp /etc/xdg/picom.conf $dest/etc/xdg/
 }
 
 add

@@ -32,11 +32,13 @@ bspc rule -a Screenkey manage=off
 
 xsetroot -cursor_name left_ptr
 # auto start
+$HOME/myScript/setcard.sh
 $HOME/.config/polybar/forest/launch.sh
-picom --experimental-backends -b
-feh --bg-fill $HOME/Downloads/julia-shi-final.jpg
+picom -b
+feh --bg-fill $HOME/Downloads/wallpaper1.jpg
 fcitx5 &
 ps aux | grep -v grep | grep care_eye || $HOME/myScript/careEye/start_care_eye.sh
+optimus-manager-qt &
 
 sleep 3
 # Terminate already running klipper instances
