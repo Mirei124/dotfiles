@@ -37,6 +37,7 @@ bspc rule -a Gimp-2.10 desktop='^3' state=floating follow=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a EasyConnect state=floating
 
 sleep 3
 # Terminate already running klipper instances
