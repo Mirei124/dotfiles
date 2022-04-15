@@ -9,8 +9,10 @@ $HOME/.config/polybar/forest/launch.sh
 picom -b
 feh --bg-fill $HOME/Downloads/wallpaper1.jpg
 fcitx5 &
-ps aux | grep -v grep | grep care_eye || $HOME/myScript/careEye/start_care_eye.sh
+pgrep -f care_eye || $HOME/myScript/careEye/start_care_eye.sh
 optimus-manager-qt &
+pgrep -f org_kde_powerdevil || /usr/lib/org_kde_powerdevil &
+pgrep -f polkit-kde-authentication-agent-1 || /usr/lib/polkit-kde-authentication-agent-1 &
 
 bspc monitor -d I II III IV V
 
@@ -19,8 +21,6 @@ bspc config window_gap           6
 bspc config split_ratio          0.5
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
-# bspc config normal_border_color		      "#579da0"
-# bspc config focused_border_color	      "#CE93D8"
 bspc config focused_border_color	      "#ffb0cd"
 
 # bspc config focus_follows_pointer true
@@ -32,12 +32,14 @@ bspc config pointer_action3 resize_corner
 # bspc config automatic_scheme spiral
 # bspc config automatic_scheme longest_side
 
-bspc rule -a Gimp-2.10 desktop='^3' state=floating follow=on
+# bspc rule -a Gimp-2.10 desktop='^3' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a EasyConnect state=floating
+bspc rule -a Pavucontrol state=floating
+bspc rule -a flameshot state=floating
 
 sleep 3
 # Terminate already running klipper instances
