@@ -1,0 +1,13 @@
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+INPUT_METHOD=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
+
+LIBVA_DRIVER_NAME=radeonsi
+VDPAU_DRIVER=radeonsi
+allow_rgb10_configs=false
+_JAVA_AWT_WM_NONREPARENTING=1
+
+EDITOR=nvim

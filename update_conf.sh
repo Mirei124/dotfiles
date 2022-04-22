@@ -39,6 +39,8 @@ function add(){
 
     mkdir -p $dest/etc/xdg
     cp /etc/xdg/picom.conf $dest/etc/xdg/
+
+    cp $HOME/.pam_environment $dest/pam_environment
 }
 
 add
