@@ -11,7 +11,7 @@ ctrl + alt + t
 
 # program launcher
 alt + @space
-    rofi -show drun
+    rofi -combi-modi window,drun -show combi -modi combi
 super + @space
     rofi -show drun
 
@@ -127,11 +127,11 @@ super + {Left,Down,Up,Right}
 
 # volume control
 XF86AudioLowerVolume
-	pulseaudio-ctl down
+    amixer set Master 5%-
 XF86AudioRaiseVolume
-	pulseaudio-ctl up
+    amixer set Master 5%+
 XF86AudioMute
-    pulseaudio-ctl mute
+    amixer set Master toggle
 
 # brightness control
 XF86MonBrightnessDown

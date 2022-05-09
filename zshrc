@@ -105,6 +105,9 @@ alias vi=nvim
 alias stu="systemctl status"
 alias sta="systemctl start"
 alias sto="systemctl stop"
+alias str="systemctl restart"
+alias ste="systemctl enable"
+alias std="systemctl disable"
 alias tt="tldr -t ocean"
 
 # set proxy
