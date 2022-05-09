@@ -5,7 +5,7 @@ import os
 from pynput.keyboard import Listener as k_Listener
 from pynput.mouse import Listener as m_Listener
 
-logging.basicConfig(filename='log_care_eye.txt', filemode='w', level=logging.INFO,
+logging.basicConfig(filename='/home/k/myScript/careEye/log_care_eye.txt', filemode='w', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s: %(message)s')
 
 
