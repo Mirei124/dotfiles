@@ -6,12 +6,13 @@ Plug 'scrooloose/nerdtree'
 " Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/vim-easy-align'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'lambdalisue/suda.vim'
-" Plug 'puremourning/vimspector'
+Plug 'puremourning/vimspector'
 Plug 'EdenEast/nightfox.nvim'  "theme
 call plug#end()
 
@@ -22,6 +23,8 @@ set smartcase
 set pyxversion=3
 set clipboard=unnamedplus
 set colorcolumn=81
+set wrap
+set linebreak
 set scrolloff=3
 
 " color
@@ -35,6 +38,7 @@ colorscheme nightfox
 
 " Tab size
 set expandtab
+set smarttab
 set shiftwidth=4
 set tabstop=4
 filetype indent on
@@ -97,6 +101,11 @@ autocmd InsertLeave * call Fcitx2en()
 " autocmd BufLeave *  :silent !fcitx5-remote -c " 离开 Buf 时禁用输入法
 
 " ========== plug-config ==========
+" lightline
+let g:lightline = {
+        \ 'colorscheme': 'material',
+      \ }
+
 " suda
 noremap \sw :SudaWrite<CR>
 
@@ -131,15 +140,15 @@ noremap \sw :SudaWrite<CR>
 noremap ff :Format<CR>
 " " noremap ff :Prettier<CR>
 " 
-" " vimspector
-" " let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" vimspector
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 " let g:vimspector_enable_mappings = 'HUMAN'
-" 
-" " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
-" " for normal mode - the word under the cursor
-" nmap <Leader>di <Plug>VimspectorBalloonEval
-" " for visual mode, the visually selected text
-" xmap <Leader>di <Plug>VimspectorBalloonEval
+
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " airline
 let g:airline_theme='bubblegum'
@@ -222,7 +231,7 @@ set hidden
 " set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+" set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
