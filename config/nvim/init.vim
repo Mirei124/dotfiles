@@ -4,9 +4,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'scrooloose/nerdtree'
 " Plug 'scrooloose/syntastic'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-" Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/vim-easy-align'
 Plug 'gcmt/wildfire.vim'
@@ -18,14 +18,16 @@ call plug#end()
 
 " ========== my ==========
 set number
+" set relativenumber
 set ignorecase
 set smartcase
 set pyxversion=3
 set clipboard=unnamedplus
 set colorcolumn=81
-set wrap
-set linebreak
+set wrap " 折行
+" set linebreak " 折行不切分单词
 set scrolloff=3
+set laststatus=2 " 状态栏高度
 
 " color
 set t_Co=256
@@ -35,6 +37,7 @@ set background=dark
 colorscheme nightfox
 
 " set cursorline
+" set cursorcolumn
 
 " Tab size
 set expandtab
@@ -66,6 +69,7 @@ nmap <leader>z :call Zoom()<CR>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
+inoremap < <><left>
 inoremap ' ''<left>
 inoremap " ""<left>
 
@@ -103,7 +107,7 @@ autocmd InsertLeave * call Fcitx2en()
 " ========== plug-config ==========
 " lightline
 let g:lightline = {
-        \ 'colorscheme': 'material',
+        \ 'colorscheme': 'nightfox',
       \ }
 
 " suda
@@ -150,23 +154,23 @@ nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
 
-" airline
-let g:airline_theme='bubblegum'
-" let g:airline_theme='deus'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>0 <Plug>AirlineSelectTab0
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
+" " airline
+" let g:airline_theme='bubblegum'
+" " let g:airline_theme='deus'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
+" nmap <leader>0 <Plug>AirlineSelectTab0
+" nmap <leader>- <Plug>AirlineSelectPrevTab
+" nmap <leader>+ <Plug>AirlineSelectNextTab
 
 " EasyAlign
 xmap ga <Plug>(EasyAlign)

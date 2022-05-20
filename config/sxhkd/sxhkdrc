@@ -126,12 +126,20 @@ super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # volume control
+# XF86AudioLowerVolume
+#     amixer set Master 5%-
+# XF86AudioRaiseVolume
+#     amixer set Master 5%+
+# XF86AudioMute
+#     amixer set Master toggle
+
+# volume control pipewire
 XF86AudioLowerVolume
-    amixer set Master 5%-
+    pamixer -d 5
 XF86AudioRaiseVolume
-    amixer set Master 5%+
+    pamixer -i 5
 XF86AudioMute
-    amixer set Master toggle
+    pamixer -t
 
 # brightness control
 XF86MonBrightnessDown
