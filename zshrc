@@ -109,6 +109,7 @@ alias str="systemctl restart"
 alias ste="systemctl enable"
 alias std="systemctl disable"
 alias tt="tldr -t ocean"
+alias pa="sudo pacman"
 
 # set proxy
 alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=http://127.0.0.1:7890"

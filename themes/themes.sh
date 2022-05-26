@@ -9,6 +9,8 @@ function uninstall() {
     $HOME/themes/Layan-kde/uninstall.sh
 
     rm -rf $HOME/.local/share/icons/Tela*
+
+    rm -rf $HOME/.themes/Layan*
 }
 
 function update() {
@@ -35,6 +37,11 @@ function install() {
 
     echo 'installing kde theme...'
     cd ./Layan-kde
+    ./install.sh
+    cd $sdir
+
+    echo 'installing gtk theme...'
+    cd ./Layan-gtk-theme
     ./install.sh
     cd $sdir
 

@@ -4,6 +4,7 @@ xsetroot -cursor_name left_ptr
 
 # auto start
 pgrep -x sxhkd > /dev/null || sxhkd &
+/usr/lib/pam_kwallet_init &
 snixembed --fork
 $HOME/myScript/setcard.sh
 $HOME/.config/polybar/forest/launch.sh
