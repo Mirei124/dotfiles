@@ -69,7 +69,7 @@ nmap <leader>z :call Zoom()<CR>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
-inoremap < <><left>
+" inoremap < <><left>
 inoremap ' ''<left>
 inoremap " ""<left>
 

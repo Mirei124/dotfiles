@@ -17,7 +17,7 @@ pgrep -f org_kde_powerdevil || /usr/lib/org_kde_powerdevil &
 pgrep -f polkit-kde-authentication-agent-1 || /usr/lib/polkit-kde-authentication-agent-1 &
 
 # bspc monitor -d I II III IV V
-bspc monitor -d 一 二 三 四 五
+bspc monitor -d 1 2 3 4 5
 
 bspc config border_width         2
 # bspc config border_width         0

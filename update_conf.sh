@@ -41,6 +41,9 @@ function add(){
     cp /etc/xdg/picom.conf $dest/etc/xdg/
 
     cp $HOME/.pam_environment $dest/pam_environment
+
+    mkdir -p $dest/config/i3
+    cp $HOME/.config/i3/config $dest/config/i3/
 }
 
 add
