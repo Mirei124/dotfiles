@@ -44,6 +44,10 @@ function add(){
 
     mkdir -p $dest/config/i3
     cp $HOME/.config/i3/config $dest/config/i3/
+
+    mkdir -p $dest/config/fcitx5/conf
+    cp $HOME/.config/fcitx5/config $dest/config/fcitx5/
+    cp $HOME/.config/fcitx5/conf/classicui.conf $dest/config/fcitx5/conf/
 }
 
 add
