@@ -12,7 +12,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'gcmt/wildfire.vim'
 Plug 'tpope/vim-surround'
 Plug 'lambdalisue/suda.vim'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'EdenEast/nightfox.nvim'  "theme
 call plug#end()
 
