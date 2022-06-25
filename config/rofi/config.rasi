@@ -148,4 +148,4 @@ modi: "window,drun";
       sorting-method:    "name";
   }
 }
-@theme "/home/k/.config/rofi/themes/forest.rasi"
+@theme "themes/forest.rasi"
