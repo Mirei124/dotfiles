@@ -6,7 +6,6 @@ xsetroot -cursor_name left_ptr
 pgrep -x sxhkd > /dev/null || sxhkd &
 /usr/lib/pam_kwallet_init &
 snixembed --fork
-$HOME/myScript/setcard.sh
 $HOME/.config/polybar/forest/launch.sh
 picom -b
 feh --bg-fill $HOME/Downloads/wallpaper1.jpg

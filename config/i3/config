@@ -25,13 +25,13 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
-for_window [class=".*"] border normal 0
-# for_window [class=".*"] border pixel 0
-# gaps inner 6
-# gaps outer -4
-# hide_edge_borders none
-# smart_gaps on
-# smart_borders on
+# for_window [class=".*"] border normal 0
+for_window [class=".*"] border pixel 0
+gaps inner 6
+gaps outer -4
+hide_edge_borders none
+smart_gaps on
+smart_borders on
 
 title_align center
 # workspace_layout tabbed
@@ -52,7 +52,7 @@ client.background       #ffffff
 
 # start some applications
 exec_always --no-startup-id autotiling
-exec_always --no-startup-id $HOME/myScript/setcard.sh && $HOME/.config/polybar/forest/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/forest/launch.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/pam_kwallet_init
 exec --no-startup-id snixembed --fork
@@ -103,6 +103,9 @@ bindsym $mod+shift+v exec --no-startup-id vboxmanage startvm win10 --type gui
 
 # flameshot
 bindsym mod1+F1 exec --no-startup-id flameshot gui
+
+# turn off screen
+bindsym --release $mod+d exec --no-startup-id xset dpms force standby
 
 # border switch
 bindsym $mod+shift+t border toggle

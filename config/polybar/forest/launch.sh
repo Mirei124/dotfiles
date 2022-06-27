@@ -4,12 +4,22 @@
 
 DIR="$HOME/.config/polybar/forest"
 
-# Terminate already running bar instances
-# killall -q polybar
-polybar-msg cmd quit
+fixModule() {
+    card="$(ls /sys/class/backlight | grep amd)"
+    sed -ri "s/^card = .*/card = $card/" $HOME/.config/polybar/forest/modules.ini
+}
 
-# Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+polybarStart() {
+    # Terminate already running bar instances
+    # killall -q polybar
+    polybar-msg cmd quit
 
-# Launch the bar
-polybar -q main -c "$DIR"/config.ini &
+    # Wait until the processes have been shut down
+    while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+    # Launch the bar
+    polybar -q main -c "$DIR"/config.ini &
+}
+
+fixModule
+polybarStart
