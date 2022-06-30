@@ -25,13 +25,16 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
-# for_window [class=".*"] border normal 0
-for_window [class=".*"] border pixel 0
-gaps inner 6
-gaps outer -4
-hide_edge_borders none
-smart_gaps on
-smart_borders on
+for_window [class=".*"] border normal 0
+# for_window [class=".*"] border pixel 0
+# gaps inner 6
+# gaps outer -4
+# hide_edge_borders none
+# smart_gaps on
+# smart_borders on
+
+# set xfreerdp border
+for_window [class="xfreerdp"] border normal 2
 
 title_align center
 # workspace_layout tabbed
@@ -60,7 +63,8 @@ exec --no-startup-id picom --experimental-backend -b
 exec --no-startup-id feh --bg-fill $HOME/Downloads/wallpaper1.jpg
 exec --no-startup-id fcitx5
 exec --no-startup-id optimus-manager-qt
-exec --no-startup-id /usr/lib/org_kde_powerdevil
+# exec --no-startup-id /usr/lib/org_kde_powerdevil
+exec --no-startup-id xset s 300 && xset s on && xset dpms 600 900 1800 && xset +dpms
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id $HOME/myScript/careEye/start_care_eye.sh
 exec --no-startup-id klipper

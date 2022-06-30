@@ -108,7 +108,8 @@ alias sto="systemctl stop"
 alias str="systemctl restart"
 alias ste="systemctl enable"
 alias std="systemctl disable"
-alias tt="tldr -t ocean"
+# alias tt="tldr -t ocean"
+alias tt="tldr"
 alias pa="sudo pacman"
 
 # set proxy
