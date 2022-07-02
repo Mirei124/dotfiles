@@ -61,10 +61,10 @@ class CalcWatchTime:
 
     def notify(self):
         logging.info('notify')
-        #  os.system('notify-send -a "护眼提醒" -t 30000 "⚠️ 注意" "您已连续注视屏幕 {:d} 分钟"'.format(
-        #      round(self.watch_time / 60)))
-        os.system('zenity --info --text "⚠️ 注意 您已连续注视屏幕 {:d} 分钟"'.format(
+        os.system('notify-send -u critical -a "护眼提醒" -t 30000 "⚠️ 注意" "您已连续注视屏幕 {:d} 分钟"'.format(
             round(self.watch_time / 60)))
+        #  os.system('zenity --info --text "⚠️ 注意 您已连续注视屏幕 {:d} 分钟"'.format(
+        #      round(self.watch_time / 60)))
 
     def main(self):
         loop = asyncio.new_event_loop()

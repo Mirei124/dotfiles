@@ -3,5 +3,5 @@ from time import sleep
 
 mouse = Controller()
 while True:
-    mouse.move(-10, -10)
-    sleep(60)
+    mouse.move(-1, -1)
+    sleep(55)
