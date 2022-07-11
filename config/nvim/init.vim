@@ -218,6 +218,7 @@ let g:coc_global_extensions = [
 \ 'coc-json',
 \ 'coc-pyright',
 \ 'coc-java',
+\ 'coc-xml',
 \ 'coc-snippets',
 \ 'coc-marketplace',
 \ 'coc-markdownlint']
