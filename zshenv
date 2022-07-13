@@ -10,7 +10,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export EDITOR=nvim
 # export XDG_CURRENT_DESKTOP=KDE
-# export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
 export SXHKD_SHELL=bash
 
 # npm

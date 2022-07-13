@@ -62,7 +62,7 @@ client.background       #ffffff
 # start some applications
 exec --no-startup-id snixembed --fork
 exec_always --no-startup-id autotiling
-exec_always --no-startup-id $HOME/.config/polybar/forest/launch.sh
+exec_always --no-startup-id $HOME/.config/polybar/archcraft/launch.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/pam_kwallet_init
 exec --no-startup-id picom --experimental-backend -b

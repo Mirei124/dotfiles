@@ -219,6 +219,7 @@ let g:coc_global_extensions = [
 \ 'coc-pyright',
 \ 'coc-java',
 \ 'coc-xml',
+\ 'coc-sh',
 \ 'coc-snippets',
 \ 'coc-marketplace',
 \ 'coc-markdownlint']
