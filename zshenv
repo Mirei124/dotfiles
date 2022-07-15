@@ -11,7 +11,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export EDITOR=nvim
 # export XDG_CURRENT_DESKTOP=KDE
 export QT_QPA_PLATFORMTHEME=qt5ct
-export SXHKD_SHELL=bash
+# export SXHKD_SHELL=bash
+
+export QT_WAYLAND_FORCE_DPI=120
 
 # npm
 export npm_config_prefix=~/.node_modules

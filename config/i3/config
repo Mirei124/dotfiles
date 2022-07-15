@@ -72,7 +72,7 @@ exec --no-startup-id fcitx5
 exec --no-startup-id /usr/lib/org_kde_powerdevil
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id $HOME/myScript/careEye/start_care_eye.sh
-exec --no-startup-id klipper
+# exec --no-startup-id klipper
 
 
 # Start XDG autostart .desktop files using dex. See also
