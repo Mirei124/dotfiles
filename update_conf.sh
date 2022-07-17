@@ -50,6 +50,9 @@ function add(){
     cp $HOME/.config/fcitx5/conf/classicui.conf $dest/config/fcitx5/conf/
 
     cp -r $HOME/.config/dunst $dest/config/
+
+    cp -r $HOME/.config/waybar $dest/config/
+    cp $HOME/.config/wayfire.ini $dest/config/
 }
 
 add
