@@ -43,5 +43,7 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "json"
     ],
-    "python.analysis.useLibraryCodeForTypes": true
+    "python.analysis.useLibraryCodeForTypes": true,
+    "prettier.formatterPriority": -1,
+    "prettier.tabWidth": 4
 }

@@ -140,19 +140,19 @@ noremap \sw :SudaWrite<CR>
 " let g:syntastic_python_checkers=['pyflakes']
 
 " " prettier
-" command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 noremap ff :Format<CR>
-" " noremap ff :Prettier<CR>
+noremap <Leader>pf :Prettier<CR>
 " 
-" vimspector
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-" let g:vimspector_enable_mappings = 'HUMAN'
-
-" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
+" " vimspector
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" " let g:vimspector_enable_mappings = 'HUMAN'
+"
+" " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" " for normal mode - the word under the cursor
+" nmap <Leader>di <Plug>VimspectorBalloonEval
+" " for visual mode, the visually selected text
+" xmap <Leader>di <Plug>VimspectorBalloonEval
 
 " " airline
 " let g:airline_theme='bubblegum'
@@ -184,6 +184,8 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 " nerdcommenter
 filetype plugin on
+
+noremap <C-/> <Plug>NERDCommenterToggle
 
 " Create default mappings
 let g:NERDCreateDefaultMappings = 1
@@ -220,6 +222,7 @@ let g:coc_global_extensions = [
 \ 'coc-java',
 \ 'coc-xml',
 \ 'coc-sh',
+\ 'coc-prettier',
 \ 'coc-snippets',
 \ 'coc-marketplace',
 \ 'coc-markdownlint']

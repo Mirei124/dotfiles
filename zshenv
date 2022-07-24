@@ -5,7 +5,7 @@ export INPUT_METHOD=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 
-export allow_rgb10_configs=false
+# export allow_rgb10_configs=false
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export EDITOR=nvim
@@ -13,7 +13,10 @@ export EDITOR=nvim
 export QT_QPA_PLATFORMTHEME=qt5ct
 # export SXHKD_SHELL=bash
 
-export QT_WAYLAND_FORCE_DPI=120
+# export GBM_BACKEND=nvidia-drm
+# export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export QT_WAYLAND_FORCE_DPI=141
+export MOZ_ENABLE_WAYLAND=1
 
 # npm
 export npm_config_prefix=~/.node_modules

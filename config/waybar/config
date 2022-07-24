@@ -23,7 +23,7 @@
     // Modules configuration
     "wlr/taskbar": {
         "format": "{icon}",
-        "icon-size": 28,
+        "icon-size": 36,
         "icon-theme": "Tela-dark",
         "tooltip-format": "{title}",
         "on-click": "activate",
@@ -32,7 +32,11 @@
         /* "ignore-list": [ */
         /* "Alacritty" */
         /* ], */
-        /* "app_ids-mapping": {} */
+        "app_ids-mapping": {
+            "jetbrains-idea-ce": "idea",
+            "nil": "Microsoft-edge",
+            "jetbrains-pycharm-ce": "pycharm"
+        }
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -58,8 +62,8 @@
     },
     "temperature": {
         // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 65,
         "format-critical": " {temperatureC}°C",
         "format": " {temperatureC}°C"
     },
@@ -78,6 +82,7 @@
         ]
     },
     "battery": {
+        "full-at": 95,
         "states": {
             "good": 95,
             "warning": 30,
@@ -110,7 +115,7 @@
         "scroll-step": 5,
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
-        "format-muted": "",
+        "format-muted": "",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
@@ -119,6 +124,7 @@
             "portable": "",
             "car": "",
             "default": [
+                "",
                 "",
                 ""
             ]
