@@ -1,16 +1,4 @@
-/* #colors
-{
-    background: #a7d479;
-    background: #fdd28e;
-    background: #ecc5f4;
-    background: #ff928f;
-    background: #a2e0df;
-}
- */
-
-
-*
-{
+* {
     font-family: 'JetbrainsMono Nerd Font';
     font-size: 15px;
 
@@ -20,21 +8,18 @@
     border-radius: 10px;
 }
 
-window#waybar
-{
+window#waybar {
     border-radius: 0;
     /* background: linear-gradient(to left top, pink, skyblue); */
     /* background: hsl(356, 94%, 94%); */
     background: transparent;
 }
 
-window#waybar.hidden
-{
+window#waybar.hidden {
     opacity: .2;
 }
 
-#window
-{
+#window {
     margin-top: 4px;
     padding-right: 10px;
     padding-left: 10px;
@@ -46,8 +31,7 @@ window#waybar.hidden
     background: transparent;
 }
 
-#tags
-{
+#tags {
     font-size: 4px;
 
     margin-top: 4px;
@@ -60,8 +44,7 @@ window#waybar.hidden
     background: #161320;
 }
 
-#tags button
-{
+#tags button {
     font-size: 16px;
 
     transition: none;
@@ -71,8 +54,7 @@ window#waybar.hidden
     background: transparent;
 }
 
-#tags button.occupied
-{
+#tags button.occupied {
     font-size: 4px;
 
     transition: none;
@@ -81,15 +63,13 @@ window#waybar.hidden
     background: transparent;
 }
 
-#tags button.focused
-{
+#tags button.focused {
     color: #abe9b3;
     border-top: 2px solid #abe9b3;
     border-bottom: 2px solid #abe9b3;
 }
 
-#tags button:hover
-{
+#tags button:hover {
     transition: none;
 
     color: #fae3b0;
@@ -99,132 +79,11 @@ window#waybar.hidden
     text-shadow: inherit;
 }
 
-#tags button.focused:hover
-{
+#tags button.focused:hover {
     color: #e8a2af;
 }
 
-#network
-{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 8px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    transition: none;
-
-    color: #161320;
-    border-radius: 10px;
-    background: #ff928f;
-}
-
-#pulseaudio
-{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 8px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    transition: none;
-
-    color: #1a1826;
-    border-radius: 10px;
-    background: #ecc5f4;
-}
-
-#battery
-{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 8px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    transition: none;
-
-    color: #161320;
-    border-radius: 10px;
-    background: #fdd28e;
-}
-
-#battery.plugged,
-#battery.charging
-{
-    color: #161320;
-    background-color: #a2e0df;
-}
-
-#battery.critical:not(.charging)
-{
-    animation-name: blink;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-
-    color: #161320;
-    background-color: #ecc5f4;
-}
-
-@keyframes blink
-{
-    to
-    {
-        color: #fff;
-        background-color: #ff928f;
-    }
-}
-
-#backlight
-{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 8px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    transition: none;
-
-    color: #161320;
-    border-radius: 10px;
-    background: #ff928f;
-}
-
-#clock
-{
-    margin-top: 4px;
-    margin-right: 8px;
-    margin-bottom: 4px;
-    margin-left: 8px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    transition: none;
-
-    color: #161320;
-    border-radius: 10px;
-    background: #a2e0df;
-}
-
-#memory
-{
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 8px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    transition: none;
-
-    color: #161320;
-    border-radius: 10px;
-    background: #a7d479;
-}
-
-#cpu
-{
+#network {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -238,8 +97,21 @@ window#waybar.hidden
     background: #a9def9;
 }
 
-#tray
-{
+#pulseaudio {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    transition: none;
+
+    color: #1a1826;
+    border-radius: 10px;
+    background: #ff99c8;
+}
+
+#battery {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -250,11 +122,105 @@ window#waybar.hidden
 
     color: #161320;
     border-radius: 10px;
-    background: #a2e0df;
+    background: #e4c1f9;
 }
 
-#custom-launcher
-{
+#battery.plugged,
+#battery.charging {
+    color: #161320;
+    background-color: #b5e8e0;
+}
+
+#battery.critical:not(.charging) {
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    color: #161320;
+    background-color: #e4c1f9;
+}
+
+@keyframes blink {
+    to {
+        color: #fff;
+        background-color: #ff99c8;
+    }
+}
+
+#backlight {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    transition: none;
+
+    color: #161320;
+    border-radius: 10px;
+    background: #e4c1f9;
+}
+
+#clock {
+    margin-top: 4px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    transition: none;
+
+    color: #161320;
+    border-radius: 10px;
+    background: #d3f8e2;
+}
+
+#memory {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    transition: none;
+
+    color: #161320;
+    border-radius: 10px;
+    background: #d3f8e2;
+}
+
+#cpu {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    transition: none;
+
+    color: #161320;
+    border-radius: 10px;
+    background: #a9def9;
+}
+
+#tray {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    transition: none;
+
+    color: #161320;
+    border-radius: 10px;
+    background: #000;
+}
+
+#custom-launcher {
     font-size: 24px;
 
     margin-top: 4px;
@@ -269,8 +235,7 @@ window#waybar.hidden
     background: #161320;
 }
 
-#custom-power
-{
+#custom-power {
     font-size: 20px;
 
     margin-top: 4px;
@@ -287,8 +252,7 @@ window#waybar.hidden
     background: #f28fad;
 }
 
-#custom-wallpaper
-{
+#custom-wallpaper {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -302,8 +266,7 @@ window#waybar.hidden
     background: #c9cbff;
 }
 
-#custom-updates
-{
+#custom-updates {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -317,8 +280,7 @@ window#waybar.hidden
     background: #e8a2af;
 }
 
-#custom-media
-{
+#custom-media {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -332,8 +294,7 @@ window#waybar.hidden
     background: #f2cdcd;
 }
 
-#temperature
-{
+#temperature {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -344,16 +305,14 @@ window#waybar.hidden
 
     color: #161320;
     border-radius: 10px;
-    background: #fdd28e;
+    background: #ede7b1;
 }
 
-#temperature.critical
-{
-    background: #ff928f;
+#temperature.critical {
+    background: #ff99c8;
 }
 
-#idle_inhibitor
-{
+#idle_inhibitor {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -367,30 +326,31 @@ window#waybar.hidden
     background: #d3f8e2;
 }
 
-#taskbar button.minimized
-{
+#taskbar button.minimized {
     transition: opacity .3s ease-out;
 
     opacity: .5;
 }
 
-#taskbar button.active
-{
+#taskbar button.active {
+    /* margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0; */
     transition: border .3s ease-out;
 
     border-width: 0 0 4px;
     border-style: solid;
-    border-color: #ecc5f4;
+    border-color: #554236;
 }
 
-#taskbar
-{
+#taskbar {
     margin: 0 0;
     padding: 0 10px;
+    /* background: #fedfe1; */
+    /* background: #ff99c8; */
 }
 
-#taskbar button
-{
+#taskbar button {
     margin: 0 2px 0;
     padding: 0 2px 0;
 
@@ -413,9 +373,8 @@ window#waybar.hidden
 #network,
 #pulseaudio,
 #backlight,
-#clock
-{
+#clock {
     box-shadow: 3px 3px 68px -5px rgba(255, 255, 255, .5),
-    inset -2px -2px 16px -5px rgba(255, 255, 255, .6),
-    inset 0 3px 28px -15px rgb(255, 255, 255);
+        inset -2px -2px 16px -5px rgba(255, 255, 255, .6),
+        inset 0 3px 28px -15px rgb(255, 255, 255);
 }
