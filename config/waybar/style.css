@@ -1,4 +1,4 @@
-/* #colors
+#colors
 {
     background: #a7d479;
     background: #fdd28e;
@@ -6,8 +6,6 @@
     background: #ff928f;
     background: #a2e0df;
 }
- */
-
 
 *
 {
@@ -134,6 +132,11 @@ window#waybar.hidden
     background: #ecc5f4;
 }
 
+#pulseaudio.muted
+{
+    color: #ff928f;
+}
+
 #battery
 {
     margin-top: 4px;
@@ -180,6 +183,7 @@ window#waybar.hidden
 #backlight
 {
     margin-top: 4px;
+    margin-right: 8px;
     margin-bottom: 4px;
     margin-left: 8px;
     padding-right: 10px;
@@ -195,7 +199,6 @@ window#waybar.hidden
 #clock
 {
     margin-top: 4px;
-    margin-right: 8px;
     margin-bottom: 4px;
     margin-left: 8px;
     padding-right: 10px;
@@ -329,7 +332,7 @@ window#waybar.hidden
 
     color: #161320;
     border-radius: 10px;
-    background: #f2cdcd;
+    background: #a7d479;
 }
 
 #temperature
@@ -405,7 +408,7 @@ window#waybar.hidden
 	background-color: #fedfe1;
 } */
 
-/* #taskbar, */
+#custom-media,
 #memory,
 #tray,
 #temperature,

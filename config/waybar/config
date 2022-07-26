@@ -9,16 +9,16 @@
         "memory",
         "temperature",
         "battery",
-        "network"
+        "network",
+        "clock"
     ],
-    "modules-center": [
-        "wlr/taskbar"
-    ],
+    "modules-center": ["wlr/taskbar"],
     "modules-right": [
+        "custom/media",
         "tray",
         "pulseaudio",
-        "backlight",
-        "clock"
+        "backlight"
+        // "clock"
     ],
     // Modules configuration
     "wlr/taskbar": {
@@ -35,7 +35,8 @@
         "app_ids-mapping": {
             "jetbrains-idea-ce": "idea",
             "nil": "Microsoft-edge",
-            "jetbrains-pycharm-ce": "pycharm"
+            "jetbrains-pycharm-ce": "pycharm",
+            "blueberry.py": "blueberry"
         }
     },
     "idle_inhibitor": {
@@ -50,9 +51,13 @@
         "spacing": 10
     },
     "clock": {
-        "tooltip-format": "{:%Y-%m-%d %A %H:%M}",
+        "format": " {:%I:%M %p}",
         "format-alt": " {:%b %d %A, %G}",
-        "format": " {:%I:%M %p}"
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+        // "tooltip-format": "{:%Y-%m-%d %A %H:%M}",
+        "today-format": "<span color='#ff928f'><b><u>{}</u></b></span>",
+        "format-calendar": "<span color='#a7d479'><b>{}</b></span>",
+        "format-calendar-weekdays": "<span color='#a2e0df'><b>{}</b></span>"
     },
     "cpu": {
         "format": " {usage}%"
@@ -72,14 +77,8 @@
         "format": "{icon} {percent}%",
         "on-scroll-up": "light -A 5",
         "on-scroll-down": "light -U 5",
-        "states": [
-            0,
-            50
-        ],
-        "format-icons": [
-            "",
-            ""
-        ]
+        "states": [0, 50],
+        "format-icons": ["", ""]
     },
     "battery": {
         "full-at": 95,
@@ -89,15 +88,12 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
+        "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -106,16 +102,19 @@
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
         "format-wifi": " {essid} {bandwidthDownBytes}",
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "⚠ Disconnected",
+        "format-disconnected": " Disconnected",
+        "tooltip-format": " {ipaddr}",
         "interval": 5,
         "on-click": "rofi -combi-modi window,drun -show combi -modi combi",
         "on-click-right": "wlogout"
     },
     "pulseaudio": {
         "scroll-step": 5,
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
         "format-muted": "",
+        "format-source": "",
+        "format-source-muted": "",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
@@ -123,24 +122,24 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [
-                "",
-                "",
-                ""
-            ]
+            "default": ["", ""]
         },
         "on-click": "pavucontrol",
         "on-click-right": "blueberry"
     },
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "{icon}{}",
         "return-type": "json",
-        "max-length": 40,
         "format-icons": {
-            "spotify": "",
-            "default": "🎜"
+            "Playing": " ",
+            "Paused": " "
         },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        "max-length": 30,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl stop",
+        // "smooth-scrolling-threshold": 6, // This value was tested using a trackpad, it should be lowered if using a mouse.
+        "on-scroll-down": "playerctl next",
+        "on-scroll-up": "playerctl previous"
     }
 }

@@ -16,9 +16,14 @@ function add(){
     
     cp $HOME/.zshrc $dest/zshrc
     
-    cp -r $HOME/myScript $dest
-    rm $dest/myScript/careEye/log_care_eye.txt
-    
+   mkdir -p $dest/myScript/careEye
+   cp $HOME/myScript/careEye/care_eye.py $dest/myScript/careEye/
+   cp $HOME/myScript/careEye/start_care_eye.sh $dest/myScript/careEye/
+   cp $HOME/myScript/desktop.py $dest/myScript/
+   cp $HOME/myScript/dpms-off $dest/myScript/
+   cp $HOME/myScript/proxy.sh $dest/myScript/
+   cp $HOME/myScript/stayAwake $dest/myScript/
+
     mkdir -p $dest/themes
     cp $HOME/themes/themes.sh $dest/themes/
     

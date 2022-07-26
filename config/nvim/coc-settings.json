@@ -40,9 +40,7 @@
     "diagnostic.virtualTextPrefix": " ❯❯❯ ",
     "diagnostic.virtualText": false,
     "codeLens.enable": true,
-    "coc.preferences.formatOnSaveFiletypes": [
-        "json"
-    ],
+    "coc.preferences.formatOnSaveFiletypes": [],
     "python.analysis.useLibraryCodeForTypes": true,
     "prettier.formatterPriority": -1,
     "prettier.tabWidth": 4
