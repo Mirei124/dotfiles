@@ -131,8 +131,8 @@
         "format": "{icon}{}",
         "return-type": "json",
         "format-icons": {
-            "Playing": " ",
-            "Paused": " "
+            "Playing": " ",
+            "Paused": " "
         },
         "max-length": 30,
         "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",

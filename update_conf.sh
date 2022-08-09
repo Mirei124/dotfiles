@@ -23,6 +23,7 @@ function add(){
    cp $HOME/myScript/dpms-off $dest/myScript/
    cp $HOME/myScript/proxy.sh $dest/myScript/
    cp $HOME/myScript/stayAwake $dest/myScript/
+   cp $HOME/myScript/mirror_speed.py $dest/myScript/
 
     mkdir -p $dest/themes
     cp $HOME/themes/themes.sh $dest/themes/

@@ -114,7 +114,7 @@ window#waybar.hidden
 
     color: #161320;
     border-radius: 10px;
-    background: #ff928f;
+    background: #ecc5f4;
 }
 
 #pulseaudio
@@ -193,7 +193,7 @@ window#waybar.hidden
 
     color: #161320;
     border-radius: 10px;
-    background: #ff928f;
+    background: #fdd28e;
 }
 
 #clock
@@ -208,7 +208,7 @@ window#waybar.hidden
 
     color: #161320;
     border-radius: 10px;
-    background: #a2e0df;
+    background: #ff928f;
 }
 
 #memory
@@ -377,14 +377,13 @@ window#waybar.hidden
     opacity: .5;
 }
 
-#taskbar button.active
-{
-    transition: border .3s ease-out;
+/* #taskbar button.active {
+    transition: border 0.3s ease-out;
 
     border-width: 0 0 4px;
     border-style: solid;
     border-color: #ecc5f4;
-}
+} */
 
 #taskbar
 {
@@ -398,15 +397,16 @@ window#waybar.hidden
     padding: 0 2px 0;
 
     border-width: 2px 0 2px;
-    border-radius: 0;
+    border-radius: 50%;
 }
 
-/* #taskbar button.active {
-	transition: background-color .3s ease-out;
+#taskbar button.active
+{
+    transition: border-radius .3s ease-out;
 
-	border-radius: 50%;
-	background-color: #fedfe1;
-} */
+    border-radius: 10px;
+    background-color: #f0f0f0;
+}
 
 #custom-media,
 #memory,

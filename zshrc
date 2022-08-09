@@ -111,18 +111,12 @@ alias std="systemctl disable"
 # alias tt="tldr -t ocean"
 alias tt="tldr"
 alias pa="sudo pacman"
+alias rm="trash"
 
 # set proxy
 alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=http://127.0.0.1:7890"
 alias vst="$HOME/myScript/proxy.sh"
 alias ved="$HOME/myScript/proxy.sh ed"
-
-# npm
-PATH="$HOME/.node_modules/bin:$PATH"
-export npm_config_prefix=~/.node_modules
-
-# java
-export JAVA_HOME=/usr/lib/jvm/default
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -143,3 +137,6 @@ conda_init() {
 }
 # <<< conda initialize <<<
 
+# if [ "${TTY}" == "/dev/tty1" ]; then
+#     wayfire
+# fi

@@ -66,7 +66,7 @@ exec_always --no-startup-id $HOME/.config/polybar/archcraft/launch.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/pam_kwallet_init
 exec --no-startup-id picom --experimental-backend -b
-exec --no-startup-id feh --bg-fill $HOME/Downloads/wallpaper1.jpg
+exec --no-startup-id feh --bg-fill $HOME/Downloads/wallpaper/wallpaper1.jpg
 exec --no-startup-id fcitx5
 # exec --no-startup-id optimus-manager-qt
 exec --no-startup-id /usr/lib/org_kde_powerdevil
