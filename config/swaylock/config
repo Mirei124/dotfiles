@@ -1,0 +1,9 @@
+ignore-empty-password
+daemonize
+
+image=~/.cache/betterlockscreen/current/wall_dimblur.png
+timestr=%H:%M:%S
+datestr=
+clock
+indicator
+indicator-caps-lock

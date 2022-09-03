@@ -9,14 +9,18 @@ export GLFW_IM_MODULE=ibus
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export EDITOR=nvim
-# export XDG_CURRENT_DESKTOP=KDE
-# export QT_QPA_PLATFORMTHEME=qt5ct
 # export SXHKD_SHELL=bash
+
+# qt5ct
+if [[ "$XDG_CURRENT_DESKTOP" != "KDE" ]]; then
+    export QT_QPA_PLATFORMTHEME=qt5ct
+fi
 
 # wayland
 if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
     export QT_WAYLAND_FORCE_DPI=141
     export MOZ_ENABLE_WAYLAND=1
+    export QT_QPA_PLATFORM="wayland;xcb"
 fi
 
 # npm
@@ -24,6 +28,11 @@ export npm_config_prefix=~/.node_modules
 
 # java
 export JAVA_HOME=/usr/lib/jvm/default
+
+# ccache
+if [[ -d /usr/lib/ccache/bin ]]; then
+    export PATH="/usr/lib/ccache/bin/:$PATH"
+fi
 
 # path
 dirss=(

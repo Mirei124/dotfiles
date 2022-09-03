@@ -60,13 +60,14 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
 
 # start some applications
+exec --no-startup-id xset r rate 400 25
 exec --no-startup-id snixembed --fork
 exec_always --no-startup-id autotiling
 exec_always --no-startup-id $HOME/.config/polybar/archcraft/launch.sh
 exec --no-startup-id dunst
 exec --no-startup-id /usr/lib/pam_kwallet_init
 exec --no-startup-id picom --experimental-backend -b
-exec --no-startup-id feh --bg-fill $HOME/Downloads/wallpaper/wallpaper1.jpg
+exec --no-startup-id feh --bg-fill ~/Downloads/wallpaper/wallpaper1.jpg
 exec --no-startup-id fcitx5
 # exec --no-startup-id optimus-manager-qt
 exec --no-startup-id /usr/lib/org_kde_powerdevil

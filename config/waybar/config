@@ -1,3 +1,4 @@
+// vim: filetype=jsonc
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
@@ -63,11 +64,12 @@
         "format": " {usage}%"
     },
     "memory": {
-        "format": " {}%"
+        "format": " {used:.1f}G"
     },
     "temperature": {
         // "thermal-zone": 2,
-        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp1_input",
         "critical-threshold": 65,
         "format-critical": " {temperatureC}°C",
         "format": " {temperatureC}°C"
@@ -88,33 +90,31 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
+        "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
         "format-wifi": " {essid} {bandwidthDownBytes}",
         "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
         "format-disconnected": " Disconnected",
-        "tooltip-format": " {ipaddr}",
+        "tooltip-format": " {ipaddr}",
         "interval": 5,
         "on-click": "rofi -combi-modi window,drun -show combi -modi combi",
         "on-click-right": "wlogout"
     },
     "pulseaudio": {
         "scroll-step": 5,
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format": "{icon} {volume}%{format_source}",
+        "format-bluetooth": "{icon} {volume}%{format_source}",
         "format-muted": "",
-        "format-source": "",
-        "format-source-muted": "",
+        "format-source": " <span color='#ff928f'></span>",
+        // "format-source-muted": "",
+        "format-source-muted": "",
         "format-icons": {
             "headphones": "",
             "handsfree": "",
@@ -138,7 +138,7 @@
         "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl stop",
-        // "smooth-scrolling-threshold": 6, // This value was tested using a trackpad, it should be lowered if using a mouse.
+        "smooth-scrolling-threshold": 6, // This value was tested using a trackpad, it should be lowered if using a mouse.
         "on-scroll-down": "playerctl next",
         "on-scroll-up": "playerctl previous"
     }

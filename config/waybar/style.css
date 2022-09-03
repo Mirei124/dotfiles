@@ -1,5 +1,4 @@
-#colors
-{
+#colors {
     background: #a7d479;
     background: #fdd28e;
     background: #ecc5f4;
@@ -7,9 +6,8 @@
     background: #a2e0df;
 }
 
-*
-{
-    font-family: 'JetbrainsMono Nerd Font';
+* {
+    font-family: "JetbrainsMono Nerd Font";
     font-size: 15px;
 
     min-height: 10px;
@@ -18,21 +16,18 @@
     border-radius: 10px;
 }
 
-window#waybar
-{
+window#waybar {
     border-radius: 0;
     /* background: linear-gradient(to left top, pink, skyblue); */
     /* background: hsl(356, 94%, 94%); */
     background: transparent;
 }
 
-window#waybar.hidden
-{
-    opacity: .2;
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
-#window
-{
+#window {
     margin-top: 4px;
     padding-right: 10px;
     padding-left: 10px;
@@ -44,8 +39,7 @@ window#waybar.hidden
     background: transparent;
 }
 
-#tags
-{
+#tags {
     font-size: 4px;
 
     margin-top: 4px;
@@ -58,8 +52,7 @@ window#waybar.hidden
     background: #161320;
 }
 
-#tags button
-{
+#tags button {
     font-size: 16px;
 
     transition: none;
@@ -69,8 +62,7 @@ window#waybar.hidden
     background: transparent;
 }
 
-#tags button.occupied
-{
+#tags button.occupied {
     font-size: 4px;
 
     transition: none;
@@ -79,15 +71,13 @@ window#waybar.hidden
     background: transparent;
 }
 
-#tags button.focused
-{
+#tags button.focused {
     color: #abe9b3;
     border-top: 2px solid #abe9b3;
     border-bottom: 2px solid #abe9b3;
 }
 
-#tags button:hover
-{
+#tags button:hover {
     transition: none;
 
     color: #fae3b0;
@@ -97,13 +87,11 @@ window#waybar.hidden
     text-shadow: inherit;
 }
 
-#tags button.focused:hover
-{
+#tags button.focused:hover {
     color: #e8a2af;
 }
 
-#network
-{
+#network {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -117,8 +105,7 @@ window#waybar.hidden
     background: #ecc5f4;
 }
 
-#pulseaudio
-{
+#pulseaudio {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -132,13 +119,11 @@ window#waybar.hidden
     background: #ecc5f4;
 }
 
-#pulseaudio.muted
-{
+#pulseaudio.muted {
     color: #ff928f;
 }
 
-#battery
-{
+#battery {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -153,14 +138,12 @@ window#waybar.hidden
 }
 
 #battery.plugged,
-#battery.charging
-{
+#battery.charging {
     color: #161320;
     background-color: #a2e0df;
 }
 
-#battery.critical:not(.charging)
-{
+#battery.critical:not(.charging) {
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -171,17 +154,14 @@ window#waybar.hidden
     background-color: #ecc5f4;
 }
 
-@keyframes blink
-{
-    to
-    {
+@keyframes blink {
+    to {
         color: #fff;
         background-color: #ff928f;
     }
 }
 
-#backlight
-{
+#backlight {
     margin-top: 4px;
     margin-right: 8px;
     margin-bottom: 4px;
@@ -196,8 +176,7 @@ window#waybar.hidden
     background: #fdd28e;
 }
 
-#clock
-{
+#clock {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -211,8 +190,7 @@ window#waybar.hidden
     background: #ff928f;
 }
 
-#memory
-{
+#memory {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -226,8 +204,7 @@ window#waybar.hidden
     background: #a7d479;
 }
 
-#cpu
-{
+#cpu {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -241,8 +218,7 @@ window#waybar.hidden
     background: #a9def9;
 }
 
-#tray
-{
+#tray {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -256,8 +232,7 @@ window#waybar.hidden
     background: #a2e0df;
 }
 
-#custom-launcher
-{
+#custom-launcher {
     font-size: 24px;
 
     margin-top: 4px;
@@ -272,8 +247,7 @@ window#waybar.hidden
     background: #161320;
 }
 
-#custom-power
-{
+#custom-power {
     font-size: 20px;
 
     margin-top: 4px;
@@ -290,8 +264,7 @@ window#waybar.hidden
     background: #f28fad;
 }
 
-#custom-wallpaper
-{
+#custom-wallpaper {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -305,8 +278,7 @@ window#waybar.hidden
     background: #c9cbff;
 }
 
-#custom-updates
-{
+#custom-updates {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -320,8 +292,7 @@ window#waybar.hidden
     background: #e8a2af;
 }
 
-#custom-media
-{
+#custom-media {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -335,8 +306,7 @@ window#waybar.hidden
     background: #a7d479;
 }
 
-#temperature
-{
+#temperature {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -350,13 +320,11 @@ window#waybar.hidden
     background: #fdd28e;
 }
 
-#temperature.critical
-{
+#temperature.critical {
     background: #ff928f;
 }
 
-#idle_inhibitor
-{
+#idle_inhibitor {
     margin-top: 4px;
     margin-bottom: 4px;
     margin-left: 8px;
@@ -370,11 +338,10 @@ window#waybar.hidden
     background: #d3f8e2;
 }
 
-#taskbar button.minimized
-{
-    transition: opacity .3s ease-out;
+#taskbar button.minimized {
+    transition: opacity 0.3s ease-out;
 
-    opacity: .5;
+    opacity: 0.5;
 }
 
 /* #taskbar button.active {
@@ -385,14 +352,12 @@ window#waybar.hidden
     border-color: #ecc5f4;
 } */
 
-#taskbar
-{
+#taskbar {
     margin: 0 0;
     padding: 0 10px;
 }
 
-#taskbar button
-{
+#taskbar button {
     margin: 0 2px 0;
     padding: 0 2px 0;
 
@@ -400,9 +365,8 @@ window#waybar.hidden
     border-radius: 50%;
 }
 
-#taskbar button.active
-{
-    transition: border-radius .3s ease-out;
+#taskbar button.active {
+    transition: border-radius 0.3s ease-out;
 
     border-radius: 10px;
     background-color: #f0f0f0;
@@ -416,9 +380,9 @@ window#waybar.hidden
 #network,
 #pulseaudio,
 #backlight,
-#clock
-{
-    box-shadow: 3px 3px 68px -5px rgba(255, 255, 255, .5),
-    inset -2px -2px 16px -5px rgba(255, 255, 255, .6),
-    inset 0 3px 28px -15px rgb(255, 255, 255);
+#clock {
+    /* box-shadow: 3px 3px 68px -5px rgba(255, 255, 255, .5), */
+    /* inset -2px -2px 16px -5px rgba(255, 255, 255, .6), */
+    /* inset 0 3px 28px -15px rgb(255, 255, 255); */
+    box-shadow: inset 2px 2px 8px #cbced1, inset -2px -2px 8px #ffffff;
 }

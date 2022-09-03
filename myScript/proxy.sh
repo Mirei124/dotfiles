@@ -12,7 +12,7 @@ function stop() {
 	echo "Disable system proxy..."
 	kwriteconfig5 --file $HOME/.config/kioslaverc --group "Proxy Settings" --key "ProxyType" 0
     echo "Stop clash..."
-    pgrep cfw | xargs kill -3
+    pgrep cfw | xargs kill -9
 	echo -e "\033[32mDone\033[0m"
 }
 

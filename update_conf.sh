@@ -59,6 +59,12 @@ function add(){
 
     cp -r $HOME/.config/waybar $dest/config/
     cp $HOME/.config/wayfire.ini $dest/config/
+
+    mkdir -p $dest/config/mako
+    cp $HOME/.config/mako/config $dest/config/mako/
+
+    mkdir -p $dest/config/swaylock
+    cp $HOME/.config/swaylock/config $dest/config/swaylock/
 }
 
 add
