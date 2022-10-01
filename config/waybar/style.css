@@ -18,77 +18,11 @@
 
 window#waybar {
     border-radius: 0;
-    /* background: linear-gradient(to left top, pink, skyblue); */
-    /* background: hsl(356, 94%, 94%); */
     background: transparent;
 }
 
 window#waybar.hidden {
     opacity: 0.2;
-}
-
-#window {
-    margin-top: 4px;
-    padding-right: 10px;
-    padding-left: 10px;
-
-    transition: none;
-
-    color: transparent;
-    border-radius: 10px;
-    background: transparent;
-}
-
-#tags {
-    font-size: 4px;
-
-    margin-top: 4px;
-    margin-bottom: 4px;
-    margin-left: 12px;
-
-    transition: none;
-
-    border-radius: 10px;
-    background: #161320;
-}
-
-#tags button {
-    font-size: 16px;
-
-    transition: none;
-
-    color: #b5e8e0;
-    border-radius: 2px;
-    background: transparent;
-}
-
-#tags button.occupied {
-    font-size: 4px;
-
-    transition: none;
-
-    color: #f28fad;
-    background: transparent;
-}
-
-#tags button.focused {
-    color: #abe9b3;
-    border-top: 2px solid #abe9b3;
-    border-bottom: 2px solid #abe9b3;
-}
-
-#tags button:hover {
-    transition: none;
-
-    color: #fae3b0;
-    color: #e8a2af;
-    border-color: #e8a2af;
-    box-shadow: inherit;
-    text-shadow: inherit;
-}
-
-#tags button.focused:hover {
-    color: #e8a2af;
 }
 
 #network {
@@ -97,8 +31,6 @@ window#waybar.hidden {
     margin-left: 8px;
     padding-right: 10px;
     padding-left: 10px;
-
-    transition: none;
 
     color: #161320;
     border-radius: 10px;
@@ -111,8 +43,6 @@ window#waybar.hidden {
     margin-left: 8px;
     padding-right: 10px;
     padding-left: 10px;
-
-    transition: none;
 
     color: #1a1826;
     border-radius: 10px;
@@ -130,8 +60,6 @@ window#waybar.hidden {
     padding-right: 10px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #fdd28e;
@@ -143,7 +71,7 @@ window#waybar.hidden {
     background-color: #a2e0df;
 }
 
-#battery.critical:not(.charging) {
+#battery.warning:not(.charging) {
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: ease-out;
@@ -169,8 +97,6 @@ window#waybar.hidden {
     padding-right: 10px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #fdd28e;
@@ -182,8 +108,6 @@ window#waybar.hidden {
     margin-left: 8px;
     padding-right: 10px;
     padding-left: 10px;
-
-    transition: none;
 
     color: #161320;
     border-radius: 10px;
@@ -197,8 +121,6 @@ window#waybar.hidden {
     padding-right: 10px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #a7d479;
@@ -210,8 +132,6 @@ window#waybar.hidden {
     margin-left: 8px;
     padding-right: 10px;
     padding-left: 10px;
-
-    transition: none;
 
     color: #161320;
     border-radius: 10px;
@@ -225,8 +145,6 @@ window#waybar.hidden {
     padding-right: 10px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #a2e0df;
@@ -239,8 +157,6 @@ window#waybar.hidden {
     margin-left: 8px;
     padding-right: 5px;
     padding-left: 10px;
-
-    transition: none;
 
     color: #89dceb;
     border-radius: 10px;
@@ -257,8 +173,6 @@ window#waybar.hidden {
     padding-right: 5px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #f28fad;
@@ -270,8 +184,6 @@ window#waybar.hidden {
     margin-left: 8px;
     padding-right: 10px;
     padding-left: 10px;
-
-    transition: none;
 
     color: #161320;
     border-radius: 10px;
@@ -285,8 +197,6 @@ window#waybar.hidden {
     padding-right: 10px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #e8a2af;
@@ -299,8 +209,6 @@ window#waybar.hidden {
     padding-right: 10px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #a7d479;
@@ -312,8 +220,6 @@ window#waybar.hidden {
     margin-left: 8px;
     padding-right: 10px;
     padding-left: 10px;
-
-    transition: none;
 
     color: #161320;
     border-radius: 10px;
@@ -331,26 +237,10 @@ window#waybar.hidden {
     padding-right: 10px;
     padding-left: 10px;
 
-    transition: none;
-
     color: #161320;
     border-radius: 10px;
     background: #d3f8e2;
 }
-
-#taskbar button.minimized {
-    transition: opacity 0.3s ease-out;
-
-    opacity: 0.5;
-}
-
-/* #taskbar button.active {
-    transition: border 0.3s ease-out;
-
-    border-width: 0 0 4px;
-    border-style: solid;
-    border-color: #ecc5f4;
-} */
 
 #taskbar {
     margin: 0 0;
@@ -365,11 +255,20 @@ window#waybar.hidden {
     border-radius: 50%;
 }
 
+#taskbar button:hover {
+    border-radius: 10px;
+    background-color: #999;
+}
+#taskbar button.minimized {
+    transition: opacity 0.3s ease-out;
+
+    opacity: 0.6;
+}
 #taskbar button.active {
     transition: border-radius 0.3s ease-out;
 
     border-radius: 10px;
-    background-color: #f0f0f0;
+    background-color: #dac9a6;
 }
 
 #custom-media,
@@ -381,8 +280,5 @@ window#waybar.hidden {
 #pulseaudio,
 #backlight,
 #clock {
-    /* box-shadow: 3px 3px 68px -5px rgba(255, 255, 255, .5), */
-    /* inset -2px -2px 16px -5px rgba(255, 255, 255, .6), */
-    /* inset 0 3px 28px -15px rgb(255, 255, 255); */
-    box-shadow: inset 2px 2px 8px #cbced1, inset -2px -2px 8px #ffffff;
+    box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
 }

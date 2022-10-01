@@ -16,13 +16,14 @@ zinit wait lucid light-mode for \
   agkozak/zsh-z \
 
 # omz
+zinit snippet OMZ::lib/history.zsh
 zinit wait lucid light-mode for \
   OMZ::lib/clipboard.zsh \
   OMZ::lib/completion.zsh \
-  OMZ::lib/history.zsh \
   OMZ::lib/git.zsh \
   OMZ::plugins/git \
   OMZ::plugins/colored-man-pages \
+  OMZ::plugins/common-aliases \
   OMZ::lib/prompt_info_functions.zsh \
   OMZ::lib/theme-and-appearance.zsh
 
@@ -43,12 +44,6 @@ zinit snippet OMZ::themes/ys.zsh-theme
 ################################################################################
 # custom
 
-alias makepkg='bwrap --unshare-all --share-net --die-with-parent \
-  --ro-bind /usr /usr --ro-bind /etc /etc --proc /proc --dev /dev \
-  --symlink usr/bin /bin --symlink usr/bin /sbin --symlink usr/lib /lib --symlink usr/lib /lib64 \
-  --bind $PWD /build/${PWD:t} --ro-bind /var/lib/pacman /var/lib/pacman --ro-bind ~/.ccache ~/.ccache \
-  --bind ~/.cache/ccache ~/.cache/ccache --chdir /build/${PWD:t} /usr/bin/makepkg'
-
 alias vi=nvim
 alias stu="systemctl status"
 alias sta="systemctl start"
@@ -59,8 +54,8 @@ alias std="systemctl disable"
 # alias tt="tldr -t ocean"
 alias tt="tldr"
 alias pa="sudo pacman"
-alias cp="cp -i"
-alias mv="mv -i"
+# alias cp="cp -i"
+# alias mv="mv -i"
 alias rm="trash"
 
 # set proxy
@@ -68,23 +63,27 @@ alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://
 alias vst="$HOME/myScript/proxy.sh"
 alias ved="$HOME/myScript/proxy.sh ed"
 
+alias bw="bwrap --unshare-all --share-net --die-with-parent --ro-bind / / \
+  --tmpfs /sys --tmpfs /tmp --tmpfs /run --proc /proc --dev /dev \
+  --ro-bind ~/.local/share/fonts ~/.local/share/fonts \
+  --ro-bind ~/.config/fontconfig ~/.config/fontconfig \
+  --bind ~/.cache/fontconfig ~/.cache/fontconfig --ro-bind ~/.Xauthority ~/.Xauthority \
+  --ro-bind /tmp/.X11-unix /tmp/.X11-unix --ro-bind /run/user/$UID/bus /run/user/$UID/bus \
+  --tmpfs /home --chdir $HOME"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-conda_init() {
-    __conda_setup="$('/opt/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
+condaInit(){
+__conda_setup="$('/opt/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniconda/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda/etc/profile.d/conda.sh"
     else
-        if [ -f "/opt/miniconda/etc/profile.d/conda.sh" ]; then
-            . "/opt/miniconda/etc/profile.d/conda.sh"
-        else
-            export PATH="/opt/miniconda/bin:$PATH"
-        fi
+        export PATH="/opt/miniconda/bin:$PATH"
     fi
-    unset __conda_setup
+fi
+unset __conda_setup
 }
 # <<< conda initialize <<<
-
-# if [[ "${TTY}" == '/dev/tty1' ]]; then
-#     wayfire
-# fi

@@ -25,7 +25,7 @@
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-size": 36,
-        "icon-theme": "Tela-dark",
+        "icon-theme": "Tela",
         "tooltip-format": "{title}",
         "on-click": "activate",
         "on-click-middle": "close",
@@ -36,8 +36,7 @@
         "app_ids-mapping": {
             "jetbrains-idea-ce": "idea",
             "nil": "Microsoft-edge",
-            "jetbrains-pycharm-ce": "pycharm",
-            "blueberry.py": "blueberry"
+            "jetbrains-pycharm-ce": "pycharm"
         }
     },
     "idle_inhibitor": {
@@ -129,15 +128,17 @@
     },
     "custom/media": {
         "format": "{icon}{}",
+        "format-alt": " はじめましての気持ちを",
         "return-type": "json",
         "format-icons": {
             "Playing": " ",
             "Paused": " "
         },
         "max-length": 30,
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}: {{artist}}-{{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
         "on-click": "playerctl play-pause",
         "on-click-right": "playerctl stop",
+        "format-alt-click": "click-middle",
         "smooth-scrolling-threshold": 6, // This value was tested using a trackpad, it should be lowered if using a mouse.
         "on-scroll-down": "playerctl next",
         "on-scroll-up": "playerctl previous"

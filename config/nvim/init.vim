@@ -14,6 +14,7 @@ Plug 'tpope/vim-surround'
 Plug 'lambdalisue/suda.vim'
 " Plug 'puremourning/vimspector'
 Plug 'EdenEast/nightfox.nvim'  "theme
+Plug 'yggdroot/indentline'
 call plug#end()
 
 " ========== my ==========
@@ -106,6 +107,11 @@ autocmd InsertLeave * call Fcitx2en()
 " autocmd BufLeave *  :silent !fcitx5-remote -c " 离开 Buf 时禁用输入法
 
 " ========== plug-config ==========
+" indentline
+let g:indentLine_setColors = 0
+" Disable quote concealing in JSON files
+let g:vim_json_conceal=0
+
 " lightline
 let g:lightline = {
         \ 'colorscheme': 'nightfox',

@@ -25,10 +25,10 @@ EOF
 }
 
 function install() {
-    echo 'installing tiling...'
-    cd ./kwin-tiling
-    plasmapkg2 --type kwinscript -u .
-    cd $sdir
+    # echo 'installing tiling...'
+    # cd ./kwin-tiling
+    # plasmapkg2 --type kwinscript -u .
+    # cd $sdir
 
     echo 'installing cursors...'
     cd ./Layan-cursors
@@ -40,10 +40,10 @@ function install() {
     ./install.sh
     cd $sdir
 
-    echo 'installing gtk theme...'
-    cd ./Layan-gtk-theme
-    ./install.sh
-    cd $sdir
+    # echo 'installing gtk theme...'
+    # cd ./Layan-gtk-theme
+    # ./install.sh
+    # cd $sdir
 
     echo 'installing icon...'
     cd ./Tela-icon-theme
