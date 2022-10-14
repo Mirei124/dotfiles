@@ -29,18 +29,14 @@ export npm_config_prefix=~/.node_modules
 # java
 export JAVA_HOME=/usr/lib/jvm/default
 
-# ccache
-if [[ -d /usr/lib/ccache/bin ]]; then
-    export PATH="/usr/lib/ccache/bin/:$PATH"
-fi
-
 # path
 dirss=(
 ~/.local/bin
 ~/.node_modules/bin
+/usr/lib/ccache/bin
 )
 for dir in "${dirss[@]}"; do
-  if [[ -z ${path[(r)$dir]} ]]; then
+  if [[ -z "${path[(r)$dir]}" ]]; then
     path=($dir $path)
-  fi 
+  fi
 done

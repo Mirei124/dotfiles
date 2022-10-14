@@ -28,10 +28,12 @@ zinit wait lucid light-mode for \
   OMZ::lib/theme-and-appearance.zsh
 
 # fzf
+
+# load fzf after OMZ::lib/key-bindings.zsh to avoid overwritting
 zinit snippet OMZ::lib/key-bindings.zsh
-# zinit light zdharma-continuum/zinit-annex-patch-dl
+# manually download:
+# wget https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh
 zinit ice wait lucid from"gh-r" as"program" src"key-bindings.zsh"
-  # dl"https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh -> key-bindings.zsh"
 zinit light junegunn/fzf
 
 # theme
@@ -87,3 +89,7 @@ fi
 unset __conda_setup
 }
 # <<< conda initialize <<<
+
+if [[ $TTY == '/dev/tty1' ]]; then
+    ./startWayfire.sh
+fi
