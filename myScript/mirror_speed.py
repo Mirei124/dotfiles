@@ -6,8 +6,8 @@ import time
 import eventlet
 import requests
 
-# mirrorlist_url = "https://archlinux.org/mirrorlist/?country=CN&protocol=http&protocol=https&ip_version=4"
-mirrorlist_url = "https://archlinux.org/mirrorlist/?country=CN&protocol=https&ip_version=4"
+mirrorlist_url = "https://archlinux.org/mirrorlist/?country=CN&protocol=http&protocol=https&ip_version=4"
+#  mirrorlist_url = "https://archlinux.org/mirrorlist/?country=CN&protocol=https&ip_version=4"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 "
