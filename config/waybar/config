@@ -1,144 +1,164 @@
 // vim: filetype=jsonc
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 40, // Waybar height
-    // "width": 120, // Waybar width
-    // Choose the order of the modules
-    "modules-left": [
-        // "cpu",
-        "memory",
-        "temperature",
-        "battery",
-        "network",
-        "clock"
-    ],
-    "modules-center": ["wlr/taskbar"],
-    "modules-right": [
-        "custom/media",
-        "tray",
-        "pulseaudio",
-        "backlight"
-        // "clock"
-    ],
-    // Modules configuration
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 36,
-        "icon-theme": "Tela",
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "on-click-right": "minimize",
-        /* "ignore-list": [ */
-        /* "Alacritty" */
-        /* ], */
-        "app_ids-mapping": {
-            "jetbrains-idea-ce": "idea",
-            "nil": "Microsoft-edge",
-            "jetbrains-pycharm-ce": "pycharm"
-        }
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 10
-    },
-    "clock": {
-        "format": " {:%I:%M %p}",
-        "format-alt": " {:%b %d %A, %G}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
-        // "tooltip-format": "{:%Y-%m-%d %A %H:%M}",
-        "today-format": "<span color='#ff928f'><b><u>{}</u></b></span>",
-        "format-calendar": "<span color='#a7d479'><b>{}</b></span>",
-        "format-calendar-weekdays": "<span color='#a2e0df'><b>{}</b></span>"
-    },
-    "cpu": {
-        "format": " {usage}%"
-    },
-    "memory": {
-        "format": " {used:.1f}G"
-    },
-    "temperature": {
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-        "critical-threshold": 65,
-        "format-critical": " {temperatureC}°C",
-        "format": " {temperatureC}°C"
-    },
-    "backlight": {
-        "device": "amdgpu_bl0",
-        "format": "{icon} {percent}%",
-        "on-scroll-up": "light -A 5",
-        "on-scroll-down": "light -U 5",
-        "states": [0, 50],
-        "format-icons": ["", ""]
-    },
-    "battery": {
-        "full-at": 95,
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} {bandwidthDownBytes}",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": " Disconnected",
-        "tooltip-format": " {ipaddr}",
-        "interval": 5,
-        "on-click": "rofi -combi-modi window,drun -show combi -modi combi",
-        "on-click-right": "wlogout"
-    },
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon} {volume}%{format_source}",
-        "format-bluetooth": "{icon} {volume}%{format_source}",
-        "format-muted": "",
-        "format-source": " <span color='#ff928f'></span>",
-        // "format-source-muted": "",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "blueberry"
-    },
-    "custom/media": {
-        "format": "{icon}{}",
-        "format-alt": " はじめましての気持ちを",
-        "return-type": "json",
-        "format-icons": {
-            "Playing": " ",
-            "Paused": " "
-        },
-        "max-length": 30,
-        "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}: {{artist}}-{{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl stop",
-        "format-alt-click": "click-middle",
-        "smooth-scrolling-threshold": 6, // This value was tested using a trackpad, it should be lowered if using a mouse.
-        "on-scroll-down": "playerctl next",
-        "on-scroll-up": "playerctl previous"
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "mode": "dock", // display mode (dock|hide|invisible|overlay)
+  "height": 40, // Waybar height
+  // "width": 120, // Waybar width
+  // Choose the order of the modules
+  "modules-left": [
+    // "cpu",
+    "memory",
+    "temperature",
+    "battery",
+    "network",
+    "clock"
+  ],
+  "modules-center": [
+    "wlr/taskbar"
+  ],
+  "modules-right": [
+    "custom/media",
+    "tray",
+    "pulseaudio",
+    "backlight"
+    // "clock"
+  ],
+  // Modules configuration
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 36,
+    "icon-theme": "Tela",
+    "tooltip-format": "{title}|{app_id}",
+    "on-click": "minimize-raise",
+    "on-click-middle": "close",
+    "on-click-right": "minimize",
+    /* "ignore-list": [ */
+    /* "Alacritty" */
+    /* ], */
+    "app_ids-mapping": {
+      "jetbrains-idea-ce": "idea",
+      "nil": "Microsoft-edge",
+      "jetbrains-pycharm-ce": "pycharm",
+      "lutris": "net.winegame.client",
+      "explorer.exe": "wine"
     }
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 10
+  },
+  "clock": {
+    "format": " {:%I:%M %p}",
+    "format-alt": " {:%G %b %d %A}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><big>{calendar}</big></tt>",
+    // "tooltip-format": "{:%Y-%m-%d %A %H:%M}",
+    "today-format": "<span color='#ff928f'><b><u>{}</u></b></span>",
+    "format-calendar": "<span color='#a7d479'><b>{}</b></span>",
+    "format-calendar-weekdays": "<span color='#a2e0df'><b>{}</b></span>"
+  },
+  "cpu": {
+    "format": " {usage}%"
+  },
+  "memory": {
+    "format": " {used:.1f}G"
+  },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+    "critical-threshold": 65,
+    "format-critical": " {temperatureC}°C",
+    "format": " {temperatureC}°C"
+  },
+  "backlight": {
+    "device": "amdgpu_bl0",
+    "format": "{icon} {percent}%",
+    "on-scroll-up": "light -A 5",
+    "on-scroll-down": "light -U 5",
+    "states": [
+      0,
+      50
+    ],
+    "format-icons": [
+      "",
+      ""
+    ]
+  },
+  "battery": {
+    "full-at": 95,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "network": {
+    // "interface": "wlp2s0", // (Optional) To force the use of this interface
+    "format-wifi": " {essid} {bandwidthDownBytes}",
+    "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
+    "format-disconnected": " Disconnected",
+    "tooltip-format": " {ipaddr}",
+    "interval": 5,
+    "on-click": "rofi -combi-modi window,drun -show combi -modi combi",
+    "on-click-right": "wlogout"
+  },
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon} {volume}%{format_source}",
+    "format-bluetooth": "{icon} {volume}%{format_source}",
+    "format-muted": "",
+    "format-source": " <span color='#ff928f'></span>",
+    // "format-source-muted": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "handsfree": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "blueberry"
+  },
+  "custom/media": {
+    "format": "{icon}{}",
+    "format-alt": " はじめましての気持ちを",
+    "return-type": "json",
+    "format-icons": {
+      "Playing": " ",
+      "Paused": " "
+    },
+    "max-length": 30,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{playerName}}: {{artist}}-{{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+    "format-alt-click": "click-middle",
+    "smooth-scrolling-threshold": 6, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "on-scroll-down": "playerctl next",
+    "on-scroll-up": "playerctl previous"
+  }
 }

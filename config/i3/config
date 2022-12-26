@@ -31,13 +31,14 @@ for_window [class="flameshot"] floating enable
 #################
 # border config #
 #################
-for_window [class=".*"] border normal 0
-# for_window [class=".*"] border pixel 0
-# gaps inner 6
+# for_window [class=".*"] border normal 0
+for_window [class=".*"] border pixel 0
+gaps inner 6
 # gaps outer -4
-# hide_edge_borders none
-# smart_gaps on
+gaps outer -6
+smart_gaps on
 # smart_borders on
+# hide_edge_borders none
 
 # special border
 for_window [class="xfreerdp"] border normal 2

@@ -56,22 +56,22 @@ alias std="systemctl disable"
 # alias tt="tldr -t ocean"
 alias tt="tldr"
 alias pa="sudo pacman"
-# alias cp="cp -i"
-# alias mv="mv -i"
-alias rm="trash"
 
 # set proxy
 alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=http://127.0.0.1:7890"
 alias vst="$HOME/myScript/proxy.sh"
 alias ved="$HOME/myScript/proxy.sh ed"
 
-alias bw="bwrap --unshare-all --share-net --die-with-parent --ro-bind / / \
+alias bw='bwrap --unshare-all --share-net --die-with-parent --ro-bind / / \
   --tmpfs /sys --tmpfs /tmp --tmpfs /run --proc /proc --dev /dev \
   --ro-bind ~/.local/share/fonts ~/.local/share/fonts \
   --ro-bind ~/.config/fontconfig ~/.config/fontconfig \
   --bind ~/.cache/fontconfig ~/.cache/fontconfig --ro-bind ~/.Xauthority ~/.Xauthority \
   --ro-bind /tmp/.X11-unix /tmp/.X11-unix --ro-bind /run/user/$UID/bus /run/user/$UID/bus \
-  --tmpfs /home --chdir $HOME"
+  --tmpfs $HOME --bind $(pwd) $HOME/bw --chdir $HOME/bw'
+
+alias pas='expac -HM "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg base-devel; expac -l n %E base; } | sort -u)) | sort -n | tail -n 20'
+alias pad="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 40"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -90,6 +90,6 @@ unset __conda_setup
 }
 # <<< conda initialize <<<
 
-if [[ $TTY == '/dev/tty1' ]]; then
-    ./startWayfire.sh
-fi
+# if [[ $TTY == '/dev/tty1' ]]; then
+#     wayfire-run
+# fi

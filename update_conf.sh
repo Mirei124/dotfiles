@@ -3,9 +3,14 @@
 function add(){
     dest=$HOME/Documents/dotconfig
     
+    # nvim old config
+    # mkdir -p $dest/config/nvim
+    # cp $HOME/.config/nvim/init.vim $dest/config/nvim/
+    # cp $HOME/.config/nvim/coc-settings.json $dest/config/nvim/
+    
+    # nvim lua config
     mkdir -p $dest/config/nvim
-    cp $HOME/.config/nvim/init.vim $dest/config/nvim/
-    cp $HOME/.config/nvim/coc-settings.json $dest/config/nvim/
+    cp -r $HOME/.config/nvim/* $dest/config/nvim/
     
     mkdir -p $dest/config/fontconfig
     cp $HOME/.config/fontconfig/fonts.conf $dest/config/fontconfig/
@@ -65,6 +70,9 @@ function add(){
 
     mkdir -p $dest/config/swaylock
     cp $HOME/.config/swaylock/config $dest/config/swaylock/
+
+    mkdir -p $dest/config/wofi
+    cp $HOME/.config/wofi/style.css $dest/config/wofi/
 }
 
 add

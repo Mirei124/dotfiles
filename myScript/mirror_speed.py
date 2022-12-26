@@ -1,4 +1,5 @@
 import os.path
+import random
 import re
 import subprocess
 import time
@@ -103,7 +104,7 @@ def analyze_result(result):
         print("{:40}\t{:.3f}\t{:.3f}\t{:.3f}".format(
             key, value[0], value[1], value[2]))
 
-    print("\n====================\n")
+    print("\n" + ("=" * 70) + "\n")
     for key, _ in sorted_result:
         print("Server = " + key + "/archlinux/$repo/os/$arch")
 
