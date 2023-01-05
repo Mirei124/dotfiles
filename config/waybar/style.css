@@ -7,7 +7,7 @@
 }
 
 * {
-  font-family: "JetbrainsMono Nerd Font";
+  font-family: "JetbrainsMono Nerd Font", "Noto Sans Mono";
   font-size: 15px;
 
   min-height: 10px;

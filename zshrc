@@ -32,6 +32,7 @@ zinit wait lucid light-mode for \
 # load fzf after OMZ::lib/key-bindings.zsh to avoid overwritting
 zinit snippet OMZ::lib/key-bindings.zsh
 # manually download:
+# zinit cd junegunn/fzf
 # wget https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh
 zinit ice wait lucid from"gh-r" as"program" src"key-bindings.zsh"
 zinit light junegunn/fzf
@@ -62,20 +63,34 @@ alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://
 alias vst="$HOME/myScript/proxy.sh"
 alias ved="$HOME/myScript/proxy.sh ed"
 
-alias bw='bwrap --unshare-all --share-net --die-with-parent --ro-bind / / \
-  --tmpfs /sys --tmpfs /tmp --tmpfs /run --proc /proc --dev /dev \
-  --ro-bind ~/.local/share/fonts ~/.local/share/fonts \
-  --ro-bind ~/.config/fontconfig ~/.config/fontconfig \
-  --bind ~/.cache/fontconfig ~/.cache/fontconfig --ro-bind ~/.Xauthority ~/.Xauthority \
-  --ro-bind /tmp/.X11-unix /tmp/.X11-unix --ro-bind /run/user/$UID/bus /run/user/$UID/bus \
-  --tmpfs $HOME --bind $(pwd) $HOME/bw --chdir $HOME/bw'
-
 alias pas='expac -HM "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg base-devel; expac -l n %E base; } | sort -u)) | sort -n | tail -n 20'
 alias pad="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 40"
 
+uzp() {
+  unzip -O gbk "$1" -d "${1%.zip}"
+}
+
+bw() {
+	(exec bwrap --unshare-all --die-with-parent --share-net --ro-bind / / \
+		--tmpfs /sys --tmpfs /home --tmpfs /tmp --tmpfs /run \
+		--proc /proc --dev /dev \
+		--ro-bind-try ~/.fonts ~/.fonts \
+		--ro-bind ~/.config/fontconfig ~/.config/fontconfig \
+		--bind ~/.cache/fontconfig ~/.cache/fontconfig \
+		--ro-bind ~/.Xauthority ~/.Xauthority \
+		--ro-bind /tmp/.X11-unix /tmp/.X11-unix \
+		--ro-bind /run/user/$UID/bus /run/user/$UID/bus \
+		--bind $PWD ~/bw --chdir ~/bw \
+		--setenv PS1 "bw$ " \
+		--setenv WINEPREFIX "$HOME/wine" \
+		/bin/bash)
+}
+
+################################################################################
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-condaInit(){
+condaInit() {
 __conda_setup="$('/opt/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"

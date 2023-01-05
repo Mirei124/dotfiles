@@ -1,4 +1,3 @@
-// vim: filetype=jsonc
 {
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
@@ -162,3 +161,4 @@
     "on-scroll-up": "playerctl previous"
   }
 }
+// vim: set ft=jsonc ts=2 sw=2 et:

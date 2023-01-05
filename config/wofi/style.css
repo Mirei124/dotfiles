@@ -14,21 +14,26 @@ window {
 #input {
   font-size: 18px;
   font-weight: bold;
+
   margin: 8px;
   padding: 4px;
+
   border-radius: 10px;
-  background-color: #f3f3f4;
+  background-color: #ebebeb;
 }
 #inner-box {
   margin: 0 8px;
   padding: 4px 0;
+
   border-radius: 10px;
-  background-color: #f3f3f4;
+  background-color: #ebebeb;
 }
 #entry {
   font-size: 18px;
+
   margin: 4px 8px;
   padding: 4px;
+
   border-radius: 10px;
   background-color: #fff;
 }
@@ -37,5 +42,6 @@ window {
 }
 #text:selected {
   font-weight: bold;
+
   color: #000;
 }
