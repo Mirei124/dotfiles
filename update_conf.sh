@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function add(){
-    dest=$HOME/Documents/dotconfig
+    dest=$PWD
     
     # nvim old config
     # mkdir -p $dest/config/nvim
@@ -10,7 +10,8 @@ function add(){
     
     # nvim lua config
     mkdir -p $dest/config/nvim
-    cp -r $HOME/.config/nvim/* $dest/config/nvim/
+    cp -r $HOME/.config/nvim/{init.lua,lua,my_snippets} $dest/config/nvim/
+    rm -f ./config/nvim/lua/.luarc.json
     
     mkdir -p $dest/config/fontconfig
     cp $HOME/.config/fontconfig/fonts.conf $dest/config/fontconfig/

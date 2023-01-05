@@ -8,6 +8,8 @@ local cmp = require 'cmp'
 
 -- use existing vs-code style snippets from a plugin (eg. rafamadriz/friendly-snippets)
 require("luasnip.loaders.from_vscode").lazy_load()
+-- load my own snippets
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./my_snippets" } })
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
