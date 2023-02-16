@@ -57,13 +57,16 @@ alias std="systemctl disable"
 # alias tt="tldr -t ocean"
 alias tt="tldr"
 alias pa="sudo pacman"
+alias tb="setterm --blank force"
+alias tp="setterm --blank poke"
 
 # set proxy
-alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=http://127.0.0.1:7890"
+alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=socks5://127.0.0.1:7891"
+alias vus="unset http_proxy https_proxy all_proxy"
 alias vst="$HOME/myScript/proxy.sh"
 alias ved="$HOME/myScript/proxy.sh ed"
 
-alias pas='expac -HM "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg base-devel; expac -l n %E base; } | sort -u)) | sort -n | tail -n 20'
+alias pas='expac -HM "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg base-devel; expac -l n %E base; } | sort -u)) | sort -n | tail -n 40'
 alias pad="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 40"
 
 uzp() {
@@ -84,6 +87,29 @@ bw() {
 		--setenv PS1 "bw$ " \
 		--setenv WINEPREFIX "$HOME/wine" \
 		/bin/bash)
+}
+
+gpgenc() {
+  gpg --batch \
+    --pinentry-mode loopback \
+    --passphrase "${gpg_pass:-12345678}" \
+    --no-symkey-cache \
+    --yes \
+    -o "${gpg_dest:-.}/$(echo "$1" | base64).gpg" -c "$1"
+}
+
+gpgdec() {
+  if fn=$(echo "${1%.gpg}" | base64 -d); then
+    echo -en "\033[0;32mdecrypt \"$fn\"?[y/n]\033[0m"
+    read choice
+    if [[ "$choice" == [yY]* ]]; then
+      gpg --batch \
+        --pinentry-mode loopback \
+        --passphrase "${gpg_pass:-12345678}" \
+        --yes \
+        -o "${gpg_dest:-.}/$fn" -d "$1"
+    fi
+  fi
 }
 
 ################################################################################

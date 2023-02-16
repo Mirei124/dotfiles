@@ -18,14 +18,15 @@ function add(){
     
     mkdir -p $dest/aria2
     cp $HOME/.aria2/aria2.conf $dest/aria2/
-    sed -ri "s#rpc-secret=\w+#rpc-secret=#g" aria2/aria2.conf
+    sed -Ei "s#rpc-secret=\w+#rpc-secret=#g" aria2/aria2.conf
+    sed -Ei 's#^(bt-tracker=[^,]+),.+$#\1#' aria2/aria2.conf
     
     cp $HOME/.zshrc $dest/zshrc
     
    mkdir -p $dest/myScript/careEye
    cp $HOME/myScript/careEye/care_eye.py $dest/myScript/careEye/
    cp $HOME/myScript/careEye/start_care_eye.sh $dest/myScript/careEye/
-   cp $HOME/myScript/desktop.py $dest/myScript/
+   cp $HOME/myScript/desktop.sh $dest/myScript/
    cp $HOME/myScript/dpms-off $dest/myScript/
    cp $HOME/myScript/proxy.sh $dest/myScript/
    cp $HOME/myScript/stayAwake $dest/myScript/

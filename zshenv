@@ -31,13 +31,17 @@ export npm_config_prefix=~/.node_modules
 export JAVA_HOME=/usr/lib/jvm/default
 
 # path
-dirss=(
+bins=(
 ~/.local/bin
 ~/.node_modules/bin
 /usr/lib/ccache/bin
 )
-for dir in "${dirss[@]}"; do
-  if [[ -z "${path[(r)$dir]}" ]]; then
-    path=($dir $path)
+for d in "${bins[@]}"; do
+  if [[ -z "${path[(r)$d]}" ]]; then
+    if [[ -e $d ]]; then
+      path=("$d" "${path[@]}")
+    fi
   fi
 done
+unset bins d
+export PATH
