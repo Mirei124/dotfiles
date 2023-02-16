@@ -17,6 +17,7 @@
     "wlr/taskbar"
   ],
   "modules-right": [
+    "mpd",
     "custom/media",
     "tray",
     "pulseaudio",
@@ -141,7 +142,7 @@
       ]
     },
     "on-click": "pavucontrol",
-    "on-click-right": "blueberry"
+    "on-click-right": "rfkill unblock bluetooth && sleep 1 && bluetoothctl connect 64:03:7F:E9:EC:91"
   },
   "custom/media": {
     "format": "{icon}{}",
@@ -159,6 +160,38 @@
     "smooth-scrolling-threshold": 6, // This value was tested using a trackpad, it should be lowered if using a mouse.
     "on-scroll-down": "playerctl next",
     "on-scroll-up": "playerctl previous"
+  },
+  "mpd": {
+    // "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{title} - {artist} ",
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{singleIcon}{title} - {artist} ",
+    "format-disconnected": "ﱙ",
+    "format-paused": "",
+    "format-stopped": "",
+    "interval": 2,
+    "consume-icons": {
+      "on": " "
+    },
+    "random-icons": {
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "{artist} - {album} - {title}",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+    "on-click": "mpc toggle",
+    "on-click-middle": "mpc prev",
+    "on-click-right": "mpc next",
+    "on-scroll-up": "mpc volume +5",
+    "on-scroll-down": "mpc volume -5",
+    "max-length": 50
   }
 }
 // vim: set ft=jsonc ts=2 sw=2 et:

@@ -78,6 +78,13 @@ function add(){
 
     mkdir -p $dest/config/wofi
     cp $HOME/.config/wofi/style.css $dest/config/wofi/
+
+    mkdir -p $dest/config/mpd
+    cp $HOME/.config/mpd/mpd.conf $dest/config/mpd/
+
+    mkdir -p $dest/config/ncmpcpp
+    cp $HOME/.config/ncmpcpp/config $dest/config/ncmpcpp/
+    cp $HOME/.config/ncmpcpp/bindings $dest/config/ncmpcpp/
 }
 
 add
