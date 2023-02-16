@@ -1,0 +1,292 @@
+#colors {
+  background: #a7d479;
+  background: #fdd28e;
+  background: #ecc5f4;
+  background: #ff928f;
+  background: #a2e0df;
+}
+
+* {
+  font-family: "JetbrainsMono Nerd Font", "Noto Sans Mono";
+  font-size: 15px;
+
+  min-height: 10px;
+
+  border: none;
+  border-radius: 10px;
+}
+
+window#waybar {
+  border-radius: 0;
+  background: transparent;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#network {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #ecc5f4;
+}
+
+#pulseaudio {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #1a1826;
+  border-radius: 10px;
+  background: #ecc5f4;
+}
+
+#pulseaudio.muted {
+  color: #ff928f;
+}
+
+#battery {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #fdd28e;
+}
+
+#battery.plugged,
+#battery.charging {
+  color: #161320;
+  background-color: #a2e0df;
+}
+
+#battery.warning:not(.charging) {
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+
+  color: #161320;
+  background-color: #ecc5f4;
+}
+
+@keyframes blink {
+  to {
+    color: #fff;
+    background-color: #ff928f;
+  }
+}
+
+#backlight {
+  margin-top: 4px;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #fdd28e;
+}
+
+#clock {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #ff928f;
+}
+
+#memory {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #a7d479;
+}
+
+#cpu {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #a9def9;
+}
+
+#tray {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #a2e0df;
+}
+
+#custom-launcher {
+  font-size: 24px;
+
+  margin-top: 4px;
+  margin-left: 8px;
+  padding-right: 5px;
+  padding-left: 10px;
+
+  color: #89dceb;
+  border-radius: 10px;
+  background: #161320;
+}
+
+#custom-power {
+  font-size: 20px;
+
+  margin-top: 4px;
+  margin-right: 8px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 5px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #f28fad;
+}
+
+#custom-wallpaper {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #c9cbff;
+}
+
+#custom-updates {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #e8a2af;
+}
+
+#custom-media {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #a7d479;
+}
+
+#temperature {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #fdd28e;
+}
+
+#temperature.critical {
+  background: #ff928f;
+}
+
+#idle_inhibitor {
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-left: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  color: #161320;
+  border-radius: 10px;
+  background: #d3f8e2;
+}
+
+#taskbar {
+  margin: 0 0;
+  padding: 0 10px;
+}
+
+#taskbar button {
+  margin: 0 2px 0;
+  padding: 0 2px 0;
+
+  border-width: 2px 0 2px;
+  border-radius: 50%;
+}
+
+#taskbar button:hover {
+  border-radius: 10px;
+  background-color: #999;
+}
+#taskbar button.minimized {
+  transition: opacity 0.3s ease-out;
+
+  opacity: 0.6;
+}
+#taskbar button.active {
+  transition: border 0.3s ease-out;
+
+  border-width: 0 0 4px;
+  border-style: solid;
+  border-color: #ff928f;
+  border-radius: 0;
+}
+/* #taskbar button.active { */
+/*     transition: border-radius 0.3s ease-out; */
+
+/*     border-radius: 10px; */
+/*     background-color: #dac9a6; */
+/* } */
+
+#custom-media,
+#memory,
+#tray,
+#temperature,
+#battery,
+#network,
+#pulseaudio,
+#backlight,
+#clock {
+  box-shadow: inset 2px 2px 5px #b8b9be, inset -3px -3px 7px #fff;
+}
