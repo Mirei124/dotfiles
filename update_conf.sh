@@ -13,8 +13,11 @@ function add(){
     cp -r $HOME/.config/nvim/{init.lua,lua,my_snippets} $dest/config/nvim/
     rm -f ./config/nvim/lua/.luarc.json
     
-    mkdir -p $dest/config/fontconfig
-    cp $HOME/.config/fontconfig/fonts.conf $dest/config/fontconfig/
+    mkdir -p $dest/config/fontconfig/conf.d
+    # cp $HOME/.config/fontconfig/fonts.conf $dest/config/fontconfig/
+    cp $HOME/.config/fontconfig/conf.d/50-generic.conf $dest/config/fontconfig/conf.d/
+    cp $HOME/.config/fontconfig/conf.d/51-language-noto-cjk.conf $dest/config/fontconfig/conf.d/
+    cp $HOME/.config/fontconfig/conf.d/52-replace.conf $dest/config/fontconfig/conf.d/
     
     mkdir -p $dest/aria2
     cp $HOME/.aria2/aria2.conf $dest/aria2/
