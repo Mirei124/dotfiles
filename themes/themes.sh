@@ -53,10 +53,10 @@ function install() {
 	# ./install.sh
 	# cd "$sdir" || exit
 
-	echo 'installing Fluent-gtk-theme...'
-	cd ./Fluent-gtk-theme || exit
-	./install.sh
-	cd "$sdir" || exit
+	# echo 'installing Fluent-gtk-theme...'
+	# cd ./Fluent-gtk-theme || exit
+	# ./install.sh
+	# cd "$sdir" || exit
 
 	echo 'installing icon...'
 	cd ./Tela-icon-theme || exit

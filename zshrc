@@ -47,7 +47,7 @@ zinit snippet OMZ::themes/ys.zsh-theme
 ################################################################################
 # custom
 
-alias vi=nvim
+alias vi="nvim"
 alias stu="systemctl status"
 alias sta="systemctl start"
 alias sto="systemctl stop"
@@ -59,6 +59,8 @@ alias tt="tldr"
 alias pa="sudo pacman"
 alias tb="setterm --blank force"
 alias tp="setterm --blank poke"
+alias pcp="rsync -avhP"
+alias vip="nvim PKGBUILD"
 
 # set proxy
 alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=socks5://127.0.0.1:7891"
@@ -92,10 +94,10 @@ bw() {
 gpgenc() {
   gpg --batch \
     --pinentry-mode loopback \
-    --passphrase "${gpg_pass:-12345678}" \
+    --passphrase "${p:-12345678}" \
     --no-symkey-cache \
     --yes \
-    -o "${gpg_dest:-.}/$(echo "$1" | base64).gpg" -c "$1"
+    -o "${d:-.}/$(echo "$1" | base64).gpg" -c "$1"
 }
 
 gpgdec() {
@@ -105,9 +107,9 @@ gpgdec() {
     if [[ "$choice" == [yY]* ]]; then
       gpg --batch \
         --pinentry-mode loopback \
-        --passphrase "${gpg_pass:-12345678}" \
+        --passphrase "${p:-12345678}" \
         --yes \
-        -o "${gpg_dest:-.}/$fn" -d "$1"
+        -o "${d:-.}/$fn" -d "$1"
     fi
   fi
 }
@@ -117,20 +119,17 @@ gpgdec() {
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 condaInit() {
-__conda_setup="$('/opt/miniconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/miniconda/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+  __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+  if [ $? -eq 0 ]; then
+      eval "$__conda_setup"
+  else
+      if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+          . "/opt/miniconda3/etc/profile.d/conda.sh"
+      else
+          export PATH="/opt/miniconda3/bin:$PATH"
+      fi
+  fi
+  unset __conda_setup
 }
 # <<< conda initialize <<<
 
-# if [[ $TTY == '/dev/tty1' ]]; then
-#     wayfire-run
-# fi
