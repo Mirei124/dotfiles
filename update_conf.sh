@@ -26,9 +26,10 @@ function add(){
     
     cp $HOME/.zshrc $dest/zshrc
     
-   mkdir -p $dest/myScript/careEye
-   cp $HOME/myScript/careEye/care_eye.py $dest/myScript/careEye/
-   cp $HOME/myScript/careEye/start_care_eye.sh $dest/myScript/careEye/
+   # mkdir -p $dest/myScript/careEye
+   # cp $HOME/myScript/careEye/care_eye.py $dest/myScript/careEye/
+   # cp $HOME/myScript/careEye/start_care_eye.sh $dest/myScript/careEye/
+   mkdir -p $dest/myScript/
    cp $HOME/myScript/desktop.sh $dest/myScript/
    cp $HOME/myScript/dpms-off $dest/myScript/
    cp $HOME/myScript/proxy.sh $dest/myScript/
@@ -85,6 +86,8 @@ function add(){
     mkdir -p $dest/config/ncmpcpp
     cp $HOME/.config/ncmpcpp/config $dest/config/ncmpcpp/
     cp $HOME/.config/ncmpcpp/bindings $dest/config/ncmpcpp/
+
+    cp -r $HOME/.config/swaync $dest/config/
 }
 
 add
