@@ -11,6 +11,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export EDITOR=nvim
 # export SXHKD_SHELL=bash
 
+export LIBVA_DRIVER_NAME=nvidia
+export VDPAU_DRIVER=radeonsi
+
 # qt5ct
 if [[ "$XDG_CURRENT_DESKTOP" != "KDE" ]]; then
     export QT_QPA_PLATFORMTHEME=qt5ct
