@@ -7,6 +7,12 @@
           "all"
         ],
         "path": "./snippets/all.json"
+      },
+      {
+        "language": [
+          "python"
+        ],
+        "path": "./snippets/python.json"
       }
     ]
   }

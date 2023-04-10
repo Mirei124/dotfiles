@@ -2,7 +2,9 @@ return {
   settings = {
     pylsp = {
       plugins = {
-        autopep8 = { enabled = false },
+        autopep8 = {
+          enabled = false
+        },
         jedi_completion = {
           eager = true,
           fuzzy = true,
@@ -13,11 +15,13 @@ return {
           maxLineLength = 120
         },
         -- checks Python source files for errors
-        pyflakes = { enabled = false },
+        pyflakes = {
+          enabled = false
+        },
         yapf = {
           enabled = true,
           args = '--style={column_limit: 120}'
-        },
+        }
       }
     }
   }

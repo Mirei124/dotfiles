@@ -28,18 +28,25 @@ return require('packer').startup({ function(use)
   use 'wbthomason/packer.nvim'
   --------------------------------------------------------------------------------
   use "EdenEast/nightfox.nvim" -- theme
-  use 'kyazdani42/nvim-web-devicons' -- icons
+  use 'nvim-tree/nvim-web-devicons' -- icons
 
   use {
     'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    requires = { 'nvim-tree/nvim-web-devicons' },
   } -- status line
 
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    -- or                            , branch = '0.1.x',
-    requires = { { 'nvim-lua/plenary.nvim' } }
+    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    requires = { 'nvim-lua/plenary.nvim' }
   } -- Find, Filter, Preview, Pick (pacman -S fd ripgrep)
+
+  use {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    run = 'make',
+    config = function()
+      require('telescope').load_extension('fzf')
+    end
+  } -- FZF sorter for telescope written in c
 
   use "folke/neodev.nvim" -- neovim docs, etc.
 
@@ -53,7 +60,7 @@ return require('packer').startup({ function(use)
   use {
     'akinsho/bufferline.nvim',
     tag = "v3.*",
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = 'nvim-tree/nvim-web-devicons'
   } -- bufferline
 
   -- use {
@@ -94,7 +101,7 @@ return require('packer').startup({ function(use)
 
   -- use {
   --   "folke/trouble.nvim",
-  --   requires = "kyazdani42/nvim-web-devicons",
+  --   requires = "nvim-tree/nvim-web-devicons",
   --   disable = true,
   --   config = function()
   --     require("trouble").setup {}
@@ -107,11 +114,9 @@ return require('packer').startup({ function(use)
   } -- inject LSP diagnostics, code actions, and more
 
   use 'numToStr/Comment.nvim' -- comment
-  use "b0o/schemastore.nvim" -- json schemas
   -- setting the commentstring option based on the cursor location in the file
   use 'JoosepAlviste/nvim-ts-context-commentstring'
 
-  use "windwp/nvim-autopairs"
 
   --auto complete
   use { 'hrsh7th/nvim-cmp' }
@@ -130,17 +135,11 @@ return require('packer').startup({ function(use)
   use { 'nvim-lua/popup.nvim' } -- Popup API
 
   use {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    run = 'make',
-    config = function()
-      require('telescope').load_extension('fzf')
-    end
-  } -- FZF sorter for telescope written in c
-
-  use {
     "lukas-reineke/indent-blankline.nvim",
   } -- indent line
 
+  use "b0o/schemastore.nvim" -- json schemas
+  use "windwp/nvim-autopairs"
   use 'gcmt/wildfire.vim'
 
   use { 'norcalli/nvim-colorizer.lua',
@@ -179,8 +178,8 @@ end,
     -- floating window
     display = {
       open_fn = function()
-        return require('packer.util').float({ border = 'single' })
-        -- return require('packer.util').float({ border = 'rounded' })
+        -- return require('packer.util').float({ border = 'single' })
+        return require('packer.util').float({ border = 'rounded' })
       end
     },
     -- profile the time taken loading your plugins
@@ -188,4 +187,5 @@ end,
       enable = true,
       threshold = 0
     }
-  } })
+  }
+})

@@ -1,0 +1,6 @@
+{
+  "logfmt": {
+    "prefix": "lfmt",
+    "body": "'%(asctime)s - %(name)s - %(levelname)s - %(message)s'"
+  }
+}
