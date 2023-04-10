@@ -53,7 +53,7 @@
     "backlight": {
       "label": "󰃟 ",
       "device": "amdgpu_bl0",
-      "min": 15,
+      "min": 0,
       "subsystem": "backlight"
     },
     "menubar#label": {
@@ -97,6 +97,9 @@
           }
         ]
       }
-    }
+    },
+    "title": {},
+    "dnd": {},
+    "mpris": {}
   }
 }
