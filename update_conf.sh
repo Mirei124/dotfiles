@@ -31,9 +31,7 @@ function add(){
    # cp $HOME/myScript/careEye/start_care_eye.sh $dest/myScript/careEye/
    mkdir -p $dest/myScript/
    cp $HOME/myScript/desktop.sh $dest/myScript/
-   cp $HOME/myScript/dpms-off $dest/myScript/
    cp $HOME/myScript/proxy.sh $dest/myScript/
-   cp $HOME/myScript/stayAwake $dest/myScript/
    cp $HOME/myScript/mirror_speed.py $dest/myScript/
 
     mkdir -p $dest/themes

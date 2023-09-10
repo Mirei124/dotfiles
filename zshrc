@@ -28,18 +28,25 @@ zinit wait lucid light-mode for \
   OMZ::lib/theme-and-appearance.zsh
 
 # fzf
-
 # load fzf after OMZ::lib/key-bindings.zsh to avoid overwritting
 zinit snippet OMZ::lib/key-bindings.zsh
 # manually download:
 # zinit cd junegunn/fzf
-# wget https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh
+# curl -OL https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh
+_key_bindings="$HOME/.local/share/zinit/plugins/junegunn---fzf/key-bindings.zsh"
+if [ ! -f "$_key_bindings" ]; then
+  curl -fsSL https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh \
+    -o "$_key_bindings"
+fi
+unset _key_bindings
 zinit ice wait lucid from"gh-r" as"program" src"key-bindings.zsh"
 zinit light junegunn/fzf
 
 # theme
 zinit ice wait"!" lucid
-zinit snippet OMZ::themes/ys.zsh-theme
+zinit snippet OMZ::themes/steeef.zsh-theme
+# zinit snippet OMZ::themes/ys.zsh-theme
+# zinit light dracula/zsh
 
 # zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 # zinit light sindresorhus/pure
@@ -59,14 +66,19 @@ alias tt="tldr"
 alias pa="sudo pacman"
 alias tb="setterm --blank force"
 alias tp="setterm --blank poke"
-alias pcp="rsync -avhP"
+# alias pcp="rsync -ah --info=progress2"
+# https://github.com/lilydjwg/dotzsh/blob/master/zshrc#L449
+alias pcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atimes --open-noatime --exclude='*~' --exclude=__pycache__"
 alias vip="nvim PKGBUILD"
+alias :q='exit'
+alias tma='tmux ls && tmux a || tmux'
+alias pyv='source ~/.pyvenv/bin/activate'
 
 # set proxy
 alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=socks5://127.0.0.1:7891"
 alias vus="unset http_proxy https_proxy all_proxy"
-alias vst="$HOME/myScript/proxy.sh"
-alias ved="$HOME/myScript/proxy.sh ed"
+alias vst="~/myScript/proxy.sh"
+alias ved="~/myScript/proxy.sh ed"
 
 alias pas='expac -HM "%011m\t%-20n\t%10d" $(comm -23 <(pacman -Qqe | sort) <({ pacman -Qqg base-devel; expac -l n %E base; } | sort -u)) | sort -n | tail -n 40'
 alias pad="expac --timefmt='%Y-%m-%d %T' '%l\t%n' | sort | tail -n 40"
@@ -85,6 +97,8 @@ bw() {
 		--ro-bind ~/.Xauthority ~/.Xauthority \
 		--ro-bind /tmp/.X11-unix /tmp/.X11-unix \
 		--ro-bind /run/user/$UID/bus /run/user/$UID/bus \
+		--ro-bind /run/user/$UID/pipewire-0 /run/user/$UID/pipewire-0 \
+		--ro-bind /run/user/$UID/wayland-1 /run/user/$UID/wayland-1 \
 		--bind $PWD ~/bw --chdir ~/bw \
 		--setenv PS1 "bw$ " \
 		--setenv WINEPREFIX "$HOME/wine" \
@@ -114,22 +128,16 @@ gpgdec() {
   fi
 }
 
+startAndDisown() {
+  nohup "$@" &>/dev/null & disown
+}
+alias sr='startAndDisown'
+
+fdc() {
+  fd -d2 "$@" ~/.config ~/.cache ~/.local/share ~/.local/lib
+}
+
 ################################################################################
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-condaInit() {
-  __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  else
-      if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-          . "/opt/miniconda3/etc/profile.d/conda.sh"
-      else
-          export PATH="/opt/miniconda3/bin:$PATH"
-      fi
-  fi
-  unset __conda_setup
-}
-# <<< conda initialize <<<
+source /opt/miniconda/etc/profile.d/conda.sh
 
