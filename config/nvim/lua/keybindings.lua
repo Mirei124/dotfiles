@@ -55,6 +55,8 @@ endfunction
 --vim.keymap.set('i', '\"', '\"\"<left>')
 -- }}}
 
+vim.keymap.set('i', 'kj', '<ESC>');
+
 local wk = require('which-key')
 -- telescope
 local builtin = require('telescope.builtin')
@@ -63,7 +65,8 @@ wk.register({
   ['<leader>'] = {
     w = { '<cmd>SudaWrite<cr>', 'save file with sudo' },
     z = { '<cmd>call Zoom()<cr>', 'zoom' },
-    t = { '<cmd>Neotree<cr>', 'toggle file explorer' },
+    -- t = { '<cmd>Neotree<cr>', 'toggle file explorer' },
+    t = { '<cmd>NvimTreeToggle<cr>', 'toggle file explorer' },
     o = { '<cmd>SymbolsOutline<cr>', 'toggle outline' },
   },
   ['f'] = {
@@ -159,7 +162,7 @@ vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
 vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
 vim.keymap.set('n', '<space>a', vim.lsp.buf.code_action, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+vim.keymap.set({ 'n', 'v' }, '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
 -- gitsigns
 require('gitsigns').setup {
