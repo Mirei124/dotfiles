@@ -1,11 +1,11 @@
 * {
-  font-family: "JetbrainsMono Nerd Font", "Noto Sans Mono";
+  font-family: "JetBrains Mono", "Symbols Nerd Font Mono", "Noto Sans Mono";
   font-size: 14px;
   font-weight: bold;
 
   min-height: 10px;
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
 }
 
 window#waybar {
@@ -13,13 +13,15 @@ window#waybar {
 }
 .modules-left,
 .modules-right {
-  margin: 4px;
+  margin: 2px;
   padding: 4px;
 
   color: #4c4f69;
   border-radius: 8px;
   background-color: #eff1f5;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2), -2px -2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    2px 2px 2px rgba(0, 0, 0, 0.2),
+    -2px -2px 2px rgba(0, 0, 0, 0.2);
 }
 
 #memory,
@@ -48,19 +50,19 @@ window#waybar {
   padding: 0 6px;
 }
 
-#tray > .active {
-  background-color: #acb0be;
-}
+/* #tray > .active { */
+/*   background-color: #acb0be; */
+/* } */
 
 #tray > .needs-attention {
   background-color: #e64553;
 }
-.modules-center {
+/* .modules-center {
   min-width: 44px;
 
   background-color: #eff1f5;
   box-shadow: 2px 0 2px rgba(0, 0, 0, 0.2), -2px 0 2px rgba(0, 0, 0, 0.2);
-}
+} */
 
 #taskbar {
   background-color: #eff1f5;
@@ -106,4 +108,26 @@ window#waybar {
 #temperature.critical {
   color: #e6e9ef;
   background: #e64553;
+}
+
+/* #workspaces {
+  margin: 4px 0;
+  padding-left: 4px;
+
+  background-color: #4c4f69;
+} */
+
+#workspaces button {
+  padding: 0 2px;
+
+  border-radius: 0;
+  background-color: #eff1f5;
+}
+
+#workspaces button.active {
+  background-color: #b7bdf8;
+}
+
+#workspaces button.urgent {
+  background-color: #e64553;
 }

@@ -2,15 +2,18 @@ window {
   border-radius: 10px;
   background-color: transparent;
 }
+
 * {
   margin: 0;
   padding: 0;
 }
+
 #outer-box {
   border: 2px solid #808080;
   border-radius: 10px;
   background-color: #fff;
 }
+
 #input {
   font-size: 18px;
   font-weight: bold;
@@ -21,6 +24,7 @@ window {
   border-radius: 10px;
   background-color: #ebebeb;
 }
+
 #inner-box {
   margin: 0 8px;
   padding: 4px 0;
@@ -28,18 +32,22 @@ window {
   border-radius: 10px;
   background-color: #ebebeb;
 }
+
 #entry {
   font-size: 18px;
 
   margin: 4px 8px;
   padding: 4px;
 
+  color: #000;
   border-radius: 10px;
   background-color: #fff;
 }
+
 #entry:selected {
   background-color: #ff928f;
 }
+
 #text:selected {
   font-weight: bold;
 

@@ -52,7 +52,7 @@
     },
     "backlight": {
       "label": "󰃟 ",
-      "device": "amdgpu_bl0",
+      "device": "amdgpu_bl1",
       "min": 0,
       "subsystem": "backlight"
     },
@@ -80,7 +80,7 @@
         ]
       },
       "menu#powermode-buttons": {
-        "label": "",
+        "label": "󰌪",
         "position": "left",
         "actions": [
           {
