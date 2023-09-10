@@ -135,11 +135,11 @@ super + {Left,Down,Up,Right}
 
 # volume control pipewire
 XF86AudioLowerVolume
-    pamixer -d 5
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
 XF86AudioRaiseVolume
-    pamixer -i 5
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioMute
-    pamixer -t
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # brightness control
 XF86MonBrightnessDown

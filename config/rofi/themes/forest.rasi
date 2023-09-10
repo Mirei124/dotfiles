@@ -15,7 +15,7 @@ configuration {
     icon-theme: 					"Tela";
     display-combi: 					"LAUNCHER";
     display-drun: 					"  ";
-    display-window:                 " 缾 ";
+    display-window:                 " 󰖲 ";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
