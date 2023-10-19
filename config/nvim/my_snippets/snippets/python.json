@@ -2,5 +2,9 @@
   "logfmt": {
     "prefix": "lfmt",
     "body": "\"%(asctime)s - %(name)s - %(levelname)s - %(message)s\""
+  },
+  "matplotrc": {
+    "prefix": "pltr",
+    "body": "plt.rcParams[\"font.sans-serif\"] = [\"Adobe Heiti Std\"]\nplt.rcParams[\"axes.unicode_minus\"] = False"
   }
 }
