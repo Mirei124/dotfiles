@@ -93,7 +93,7 @@
     "format": " {percentage}%"
   },
   "temperature": {
-    "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
     "critical-threshold": 65,
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C"

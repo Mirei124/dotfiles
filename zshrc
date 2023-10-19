@@ -71,7 +71,7 @@ alias tp="setterm --blank poke"
 alias pcp="rsync -aviHAXKhS --one-file-system --partial --info=progress2 --atimes --open-noatime --exclude='*~' --exclude=__pycache__"
 alias vip="nvim PKGBUILD"
 alias :q='exit'
-alias tma='tmux ls && tmux a || tmux'
+alias tma='if command tmux has; then command tmux a; else systemd-run --user --scope tmux; fi'
 alias pyv='source ~/.pyvenv/bin/activate'
 
 # set proxy
@@ -135,6 +135,10 @@ alias sr='startAndDisown'
 
 fdc() {
   fd -d2 "$@" ~/.config ~/.cache ~/.local/share ~/.local/lib
+}
+
+watchSync() {
+  watch -n3 'grep -E "(Dirty|Write)" /proc/meminfo; echo; ls /sys/block/ | while read device; do [[ $device != loop* ]] && awk "{ print \"$device:\\n  in_flight: \" \$9 \"\\n  write ticks: \" \$8/1000 \"\\n\" }" "/sys/block/$device/stat"; done'
 }
 
 ################################################################################
