@@ -1,11 +1,20 @@
-require('plugins')
-require('basic')
-require('keybindings')
-require('lsp')
-require('ui')
-require('plugins_config.bufferline')
-require('plugins_config.nvim-autopairs')
-require('plugins_config.nvim-cmp')
-require('plugins_config.nvim-tree')
-require('plugins_config.nvim-treesitter')
-require('plugins_config.indent-blankline')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("options")
+require("ui")
+require("plugins")
+require("keymaps")
+require("autocmd")
+
+-- https://github.com/ayamir/nvimdots 218838d

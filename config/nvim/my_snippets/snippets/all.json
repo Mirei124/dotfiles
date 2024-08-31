@@ -6,10 +6,14 @@
   },
   "vim: set ft=$0 ts=2 sw=2 et:": {
     "prefix": "vco",
-    "body": "vim: set ft=$0 ts=2 sw=2 et:"
+    "body": "vim: set ft=$0 ts=4 sw=4 et:"
   },
   "hanzi": {
     "prefix": "han",
     "body": "[\\u4e00-\\u9fa5]"
+  },
+  "foldm": {
+    "prefix": "foldm",
+    "body": "vim: foldmethod=marker foldlevel=0:"
   }
 }

@@ -2,8 +2,7 @@
   "$schema": "/etc/xdg/swaync/configSchema.json",
   "positionX": "right",
   "positionY": "top",
-  "layer": "overlay",
-  "control-center-layer": "top",
+  "layer": "top",
   "cssPriority": "user",
   "control-center-margin-top": 0,
   "control-center-margin-bottom": 0,
@@ -53,7 +52,7 @@
     },
     "backlight": {
       "label": "󰃟 ",
-      "device": "amdgpu_bl0",
+      "device": "amdgpu_bl2",
       "min": 0,
       "subsystem": "backlight"
     },
