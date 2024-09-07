@@ -119,6 +119,7 @@ local install_plugins = {
         vim.api.nvim_command([[TSUpdate]])
       end
     end,
+    cmd = { "TSUpdate", "TSInstall" },
     event = "BufReadPre",
     config = require("configs.syntax_highlight.nvim-treesitter"),
     dependencies = {
@@ -162,11 +163,16 @@ local install_plugins = {
     lazy = true,
     event = { "CursorHold" },
   },
+  -- {
+  --   "m4xshen/autoclose.nvim",
+  --   lazy = true,
+  --   event = "InsertEnter",
+  --   config = require("configs.tools.autoclose"),
+  -- },
   {
-    "m4xshen/autoclose.nvim",
-    lazy = true,
-    event = "InsertEnter",
-    config = require("configs.tools.autoclose"),
+    "windwp/nvim-autopairs",
+    event = { "InsertEnter" },
+    config = require("configs.tools.nvim-autopairs"),
   },
   {
     "ojroques/nvim-bufdel",
@@ -205,7 +211,7 @@ local install_plugins = {
   {
     "folke/trouble.nvim",
     lazy = true,
-    cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+    cmd = { "Trouble" },
     config = require("configs.tools.trouble"),
   },
   {

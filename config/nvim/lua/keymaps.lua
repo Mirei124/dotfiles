@@ -331,27 +331,27 @@ local plug_map = {
       :with_desc("filetree: Refresh"),
 
   -- Plugin: trouble
-  ["n|gt"] = map_cr("TroubleToggle")
+  ["n|gt"] = map_cr("Trouble diagnostics toggle")
       :with_noremap()
       :with_silent()
       :with_desc("lsp: Toggle trouble list"),
-  ["n|<leader>tr"] = map_cr("TroubleToggle lsp_references")
+  ["n|<leader>tr"] = map_cr("Trouble lsp_references toggle")
       :with_noremap()
       :with_silent()
       :with_desc("lsp: Show lsp references"),
-  ["n|<leader>td"] = map_cr("TroubleToggle document_diagnostics")
+  ["n|<leader>td"] = map_cr("Trouble diagnostics toggle filter.buf=0")
       :with_noremap()
       :with_silent()
       :with_desc("lsp: Show document diagnostics"),
-  ["n|<leader>tw"] = map_cr("TroubleToggle workspace_diagnostics")
+  ["n|<leader>tw"] = map_cr("Trouble diagnostics toggle")
       :with_noremap()
       :with_silent()
       :with_desc("lsp: Show workspace diagnostics"),
-  ["n|<leader>tq"] = map_cr("TroubleToggle quickfix")
+  ["n|<leader>tq"] = map_cr("Trouble quickfix toggle")
       :with_noremap()
       :with_silent()
       :with_desc("lsp: Show quickfix list"),
-  ["n|<leader>tl"] = map_cr("TroubleToggle loclist")
+  ["n|<leader>tl"] = map_cr("Trouble loclist toggle")
       :with_noremap()
       :with_silent()
       :with_desc("lsp: Show loclist"),
@@ -435,11 +435,11 @@ local function load_lsp_keymap(buf)
           vim.lsp.buf.signature_help()
         end)
         :with_desc("lsp: Signature help"),
-    ["n|gr"] = map_cr("Lspsaga rename")
+    ["n|gn"] = map_cr("Lspsaga rename")
         :with_silent()
         :with_buffer(buf)
         :with_desc("lsp: Rename in file range"),
-    ["n|gR"] = map_cr("Lspsaga rename ++project")
+    ["n|gN"] = map_cr("Lspsaga rename ++project")
         :with_silent()
         :with_buffer(buf)
         :with_desc("lsp: Rename in project range"),
@@ -468,7 +468,7 @@ local function load_lsp_keymap(buf)
         :with_silent()
         :with_buffer(buf)
         :with_desc("lsp: Goto implementation"),
-    ["n|gh"] = map_cr("Glance references")
+    ["n|gr"] = map_cr("Glance references")
         :with_silent()
         :with_buffer(buf)
         :with_desc("lsp: Show reference"),
@@ -483,9 +483,13 @@ local function load_lsp_keymap(buf)
     ["n|<leader>tt"] = map_callback(function()
           if (Diagnostic_show) then
             Diagnostic_show = false
+            vim.notify("Disable diagnostic", vim.log.levels.INFO,
+              { title = "LSP" })
             return vim.diagnostic.hide()
           else
             Diagnostic_show = true
+            vim.notify("Enable diagnostic", vim.log.levels.INFO,
+              { title = "LSP" })
             return vim.diagnostic.enable()
           end
         end)

@@ -16,7 +16,7 @@ return function()
     ---@usage Function called when a window is closed
     on_close = nil,
     ---@usage timeout for notifications in ms, default 5000
-    timeout = 5000,
+    timeout = 1000,
     -- @usage User render fps value
     fps = 20,
     -- Render function for notifications. See notify-render()
@@ -24,7 +24,7 @@ return function()
     ---@usage highlight behind the window for stages that change opacity
     background_colour = "#3e4a5b",
     ---@usage minimum width for notification windows
-    minimum_width = 50,
+    minimum_width = 10,
     ---@usage notifications with level lower than this would be ignored. [ERROR > WARN > INFO > DEBUG > TRACE]
     level = "INFO",
     ---@usage Icons for the different levels
