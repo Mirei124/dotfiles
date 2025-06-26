@@ -13,7 +13,7 @@ function add() {
 	# nvim lua config
 	# mkdir -p $dest/config/nvim
 	# cp -r $HOME/.config/nvim/{init.lua,lazy-lock.json,lua,my_snippets} $dest/config/nvim/
-	rsync -a --delete -hP $HOME/.config/nvim $dest/config/
+	# rsync -a --delete -hP $HOME/.config/nvim $dest/config/
 
 	mkdir -p $dest/aria2
 	cp $HOME/.aria2/aria2.conf $dest/aria2/
