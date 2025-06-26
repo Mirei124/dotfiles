@@ -75,6 +75,11 @@ install() {
   ./install.sh
   cd "$sdir" || exit
 
+  log 'installing Tela-icon-theme...'
+  cd ./Tela-icon-theme || exit
+  ./install.sh
+  cd "$sdir" || exit
+
   # log 'installing Layan-kde...'
   # cd ./Layan-kde || exit
   # ./install.sh
@@ -91,11 +96,6 @@ install() {
   # pacman -Qi sassc || sudo pacman -S --asdeps sassc
   # ./install.sh -t pink -s compact -i endeavouros --tweaks noborder
   # cd "$sdir" || exit
-
-  log 'installing Tela-icon-theme...'
-  cd ./Tela-icon-theme || exit
-  ./install.sh
-  cd "$sdir" || exit
 
   # log 'installing Win11OS-kde...'
   # cd ./Win11OS-kde || exit

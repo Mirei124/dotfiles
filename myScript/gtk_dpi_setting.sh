@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# KDE
+# echo 'Xft.dpi: 120' | xrdb -m
+# kreadconfig6 --file ~/.config/kdeglobals --group KScreen --key ScreenScaleFactors
+# set to 0 to disable forceFontDPI
+# kwriteconfig6 --file ~/.config/kcmfonts --group General --key forceFontDPI 120
+
 set -euo pipefail
 
 check_command() {
@@ -33,22 +39,37 @@ set_dpi() {
   # calculate gtk dpi
   _gtk_dpi=$((_dpi * 1024))
 
-  printf "\e[34m::\e[0m\e[1mscale=%s dpi=%s gtk_dpi=%s\e[0m\n" "$_scale" "$_dpi" "$_gtk_dpi"
+  # integer
+  _scale_int=$(echo "scale=0; $_scale/1" | bc)
+
+  printf "\e[34m::\e[0m\e[1mscale=%s dpi=%s gtk_dpi=%s scale_int=%s\e[0m\n" "$_scale" "$_dpi" "$_gtk_dpi" "$_scale_int"
 
   # 1. xrdb
   xrdb -m <<EOF
 Xft.dpi:${_dpi}
 EOF
 
-  # 2. xsettings
+  # 2. xsettings global
+  sed -Ei "s|(Gdk/WindowScalingFactor) .+\$|\1 ${_scale_int}|" ~/.config/xsettingsd/xsettingsd.conf
+  # 3. xsettings text
+  # remove 'Xft/DPI' if exists
+  sed -i '/^Xft\/DPI/d' ~/.config/xsettingsd/xsettingsd.conf
   sed -Ei "s|(Gdk/UnscaledDPI) .+\$|\1 ${_gtk_dpi}|" ~/.config/xsettingsd/xsettingsd.conf
 
-  # 3. gtk settings
+  # 4. gsettings global
+  gsettings set org.gnome.desktop.interface scaling-factor "$_scale_int"
+  # 5. gsettings text
+
+  if [ "$XDG_CURRENT_DESKTOP" = 'KDE' ]; then
+    printf 'Set text-scaling-factor to 1.0 on KDE'
+    gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
+  else
+    gsettings set org.gnome.desktop.interface text-scaling-factor "$_scale"
+  fi
+
+  # 6. gtk settings
   sed -Ei "s|(gtk-xft-dpi)=.+\$|\1=${_gtk_dpi}|" ~/.config/gtk-3.0/settings.ini
   sed -Ei "s|(gtk-xft-dpi)=.+\$|\1=${_gtk_dpi}|" ~/.config/gtk-4.0/settings.ini
-
-  # 4. dconf
-  dconf write /org/gnome/desktop/interface/text-scaling-factor "$_scale"
 
   # start xsettingsd
   systemctl --user stop xsettingsd.service
@@ -60,25 +81,36 @@ EOF
 get_dpi() {
   # show current config
   printf "\033[0;32m###############\n# current dpi #\n###############\033[0m\n"
+  printf "\033[0;33mxrdb\033[0m\n"
   xrdb -q | grep dpi
-  grep DPI ~/.config/xsettingsd/xsettingsd.conf
-  grep dpi ~/.config/gtk-?.0/settings.ini
+
+  printf "\n\033[0;33mxsettings\033[0m\n"
+  grep -E 'WindowScalingFactor|DPI' ~/.config/xsettingsd/xsettingsd.conf
+
+  printf "\n\033[0;33mgsettings\033[0m\n"
+  echo -n '/org/gnome/desktop/interface/scaling-factor='
+  gsettings get org.gnome.desktop.interface scaling-factor
   echo -n '/org/gnome/desktop/interface/text-scaling-factor='
-  dconf read /org/gnome/desktop/interface/text-scaling-factor
-  printf "QT_WAYLAND_FORCE_DPI=%s\n" "$QT_WAYLAND_FORCE_DPI"
+  gsettings get org.gnome.desktop.interface text-scaling-factor
+
+  printf "\n\033[0;33mgtk\033[0m\n"
+  grep dpi ~/.config/gtk-?.0/settings.ini
+
+  printf "\n\033[0;33mQT\033[0m\n"
+  printenv | grep QT_ | grep -E 'DPI|SCALE'
 }
 
 check_command bc
 check_command xrdb
-check_command dconf
+check_command gsettings
 
 case "$*" in
-s | show)
-  get_dpi
-  ;;
-*)
-  set_dpi "$*"
-  ;;
+  s | show)
+    get_dpi
+    ;;
+  *)
+    set_dpi "$*"
+    ;;
 esac
 
 # vim: set ts=2 sw=2 et:

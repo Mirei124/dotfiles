@@ -8,7 +8,7 @@ cp -r /usr/share/archiso/configs/releng "$dest"
 
 # https://wiki.archlinux.org/title/PC_speaker#Globally
 nobeep=$(
-	cat <<EOF
+  cat <<EOF
 blacklist pcspkr
 blacklist snd_pcsp
 EOF
@@ -17,7 +17,7 @@ echo "$nobeep" >"$dest"/releng/airootfs/etc/modprobe.d/nobeep.conf
 sed -i '/^play/d' "$dest"/releng/grub/grub.cfg
 
 mirrors=$(
-	cat <<EOF
+  cat <<EOF
 Server = https://opentuna.cn/archlinux/\$repo/os/\$arch
 Server = https://mirrors.nju.edu.cn/archlinux/\$repo/os/\$arch
 Server = https://mirrors.hit.edu.cn/archlinux/\$repo/os/\$arch
@@ -26,7 +26,7 @@ EOF
 echo "$mirrors" >"$dest"/releng/airootfs/etc/pacman.d/mirrorlist
 
 packages=$(
-	cat <<EOF
+  cat <<EOF
 bash-completion
 EOF
 )

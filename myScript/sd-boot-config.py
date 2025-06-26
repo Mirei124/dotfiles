@@ -22,7 +22,7 @@ class Entry:
         "nvidia_drm.modeset=1",
         # "nvidia.NVreg_EnableGpuFirmware=0",
         # "amd_pstate=passive",
-        "zswap.enabled=1",
+        # "zswap.enabled=1",
         # "splash quiet",
         "sysrq_always_enabled=1",
     ]
@@ -191,6 +191,12 @@ def check_all_conf(dir: str = ENTRY_DIR) -> tuple[list[Entry], list[Path]]:
     valid = []
     invalid = []
     for file_path in Path(dir).glob("*.conf"):
+        if file_path.name == "windows.conf":
+            valid.append(
+                Entry("Windows",
+                      "shellx64.efi", [],
+                      conf_path=Path("/boot/loader/entries/windows.conf")))
+            continue
         entry = conf_to_entry(file_path)
         if entry and check_conf(entry):
             valid.append(entry)

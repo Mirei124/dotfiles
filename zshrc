@@ -16,30 +16,22 @@ zinit wait lucid light-mode for \
   agkozak/zsh-z
 
 # omz
-zinit snippet OMZ::lib/history.zsh
 zinit wait lucid light-mode for \
+  OMZ::lib/async_prompt.zsh \
   OMZ::lib/clipboard.zsh \
   OMZ::lib/completion.zsh \
   OMZ::lib/git.zsh \
-  OMZ::plugins/git \
+  OMZ::lib/history.zsh \
+  OMZ::lib/key-bindings.zsh \
+  OMZ::lib/prompt_info_functions.zsh \
+  OMZ::lib/theme-and-appearance.zsh \
   OMZ::plugins/colored-man-pages \
   OMZ::plugins/common-aliases \
-  OMZ::lib/prompt_info_functions.zsh \
-  OMZ::lib/theme-and-appearance.zsh
+  OMZ::plugins/git
 
-# fzf
-# load fzf after OMZ::lib/key-bindings.zsh to avoid overwritting
-zinit snippet OMZ::lib/key-bindings.zsh
-# manually download:
-# zinit cd junegunn/fzf
-# curl -OL https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh
-# _key_bindings="$HOME/.local/share/zinit/plugins/junegunn---fzf/key-bindings.zsh"
-# if [ ! -f "$_key_bindings" ]; then
-#   curl -fsSL https://github.com/junegunn/fzf/raw/master/shell/key-bindings.zsh \
-#     -o "$_key_bindings"
-# fi
-# unset _key_bindings
-zinit ice wait lucid from"gh-r" as"program" src"key-bindings.zsh"
+zinit light zdharma-continuum/zinit-annex-patch-dl
+zinit ice wait'1' lucid from'gh-r' as'program' pick'*linux_amd64*' \
+  atclone'fzf --zsh > fzf.zsh' atpull'%atclone' src'fzf.zsh'
 zinit light junegunn/fzf
 
 # theme
@@ -54,8 +46,12 @@ zinit snippet OMZ::themes/steeef.zsh-theme
 # steeef: 102:78 [%*] zcompile
 # vi .local/share/zinit/snippets/OMZ::themes/steeef.zsh-theme/steeef.zsh-theme
 
+# fast-theme -t XDG:catppuccin-mocha
+
 ################################################################################
 # custom
+
+REPORTTIME=5
 
 alias vi="nvim"
 alias stu="systemctl status"
@@ -65,11 +61,11 @@ alias str="systemctl restart"
 alias ste="systemctl enable"
 alias std="systemctl disable"
 alias stuu="systemctl --user status"
-alias stua="systemctl --user start"
-alias stuo="systemctl --user stop"
-alias stur="systemctl --user restart"
-alias stue="systemctl --user enable"
-alias stud="systemctl --user disable"
+alias stau="systemctl --user start"
+alias stou="systemctl --user stop"
+alias stru="systemctl --user restart"
+alias steu="systemctl --user enable"
+alias stdu="systemctl --user disable"
 # alias tt="tldr -t ocean"
 alias tt="tldr"
 alias pa="sudo pacman"
@@ -82,13 +78,18 @@ alias vip="nvim PKGBUILD"
 alias :q='exit'
 alias pyv='source ~/.pyvenv/bin/activate'
 alias btctl='bluetoothctl'
-alias svi='sudoedit'
+alias svi='sudo -E nvim'
 alias pasd='sudo pacman -S --asdeps'
 alias ssh='TERM=xterm-256color ssh'
 alias wpre='export WINEPREFIX=$(pwd)/wine_root && echo \$WINEPREFIX=${WINEPREFIX}'
 alias curlt='curl -w "\nnslookup: %{time_namelookup}\nconnect:  %{time_connect}\ntotal:    %{time_total}\nspeed:    %{speed_download}\n" -H "User-Agent: yes-please/2000"'
 alias mtu='mount -ouid=1000,gid=1000'
-alias rdp='xfreerdp3 /f /compression /network:auto /gfx:AVC420:on /sound:sys:pulse /mic:sys:pulse,format:1 +clipboard -themes'
+alias rdp='xfreerdp /network:lan /gfx:AVC420 +gfx-progressive /video /size:1728x972 /dynamic-resolution +clipboard'
+alias rdps='xfreerdp /network:lan /gfx:AVC420 +gfx-progressive /video /size:1728x972 /dynamic-resolution +clipboard /sound:sys:pulse,format:1 /microphone:sys:pulse,format:1'
+# alias rdp='xfreerdp3 /network:lan /gfx:AVC420:on,progressive:on /video /f +clipboard'
+# alias rdps='xfreerdp3 /network:lan /gfx:AVC420:on,progressive:on /video /f +clipboard /sound:sys:pulse /mic:sys:pulse,format:1'
+alias daelog=$'journalctl -fu dae.service | sed -En \'s#.+<-> (.+) dialer=(.+) dscp.+#\\1\\t\\2#p\''
+alias ip='ip --color'
 
 # set proxy
 alias vpn="export http_proxy=http://127.0.0.1:7890 && export https_proxy=http://127.0.0.1:7890 && export all_proxy=socks5://127.0.0.1:7890"
@@ -176,7 +177,7 @@ startAndDisown() {
 alias sr='startAndDisown'
 
 fdc() {
-  fd -Hg -d2 "*$**" ~/.config ~/.cache ~/.local/share ~/.local/lib
+  fd -Hg -d2 "*$**" ~/.config ~/.cache ~/.local/share ~/.local/lib ~/.local/state
   fd -Hg -d1 "*$**" ~
 }
 
@@ -185,10 +186,15 @@ watchSync() {
 }
 
 tma() {
-  if /usr/bin/tmux has -t sd; then
-    /usr/bin/tmux attach -t sd
+  if [ -n "$1" ]; then
+    session=$1
   else
-    systemd-run --user --scope /usr/bin/tmux new -s sd
+    session='sd'
+  fi
+  if command tmux has -t ${session}; then
+    command tmux attach -t ${session}
+  else
+    systemd-run --user --scope $(which tmux) new -s ${session}
   fi
 }
 
@@ -212,32 +218,14 @@ f && $0 !~ /installed/ {sub(":","",$1);printf "%s ",$1}
 '
 }
 
-# https://stackoverflow.com/questions/53896924/convert-gitmodules-into-a-parsable-format-for-iteration-using-bash/53899440#53899440
-installSubmodules() {
-  git -C "${REPO_PATH}" config -f .gitmodules --get-regexp '^submodule\..*\.path$' |
-    while read -r KEY MODULE_PATH; do
-      # If the module's path exists, remove it.
-      # This is done b/c the module's path is currently
-      # not a valid git repo and adding the submodule will cause an error.
-      [ -d "${MODULE_PATH}" ] && sudo rm -rf "${MODULE_PATH}"
-
-      NAME="$(echo "${KEY}" | sed 's/^submodule\.\(.*\)\.path$/\1/')"
-
-      url_key="$(echo "${KEY}" | sed 's/\.path$/.url/')"
-      branch_key="$(echo "${KEY}" | sed 's/\.path$/.branch/')"
-
-      URL="$(git config -f .gitmodules --get "${url_key}")"
-      BRANCH="$(git config -f .gitmodules --get "${branch_key}" || echo "master")"
-
-      printf "\033[1;32m%s -> %s %s\033[0m\n" "${MODULE_PATH}" "${URL}" "${BRANCH}"
-      git -C "${REPO_PATH}" submodule add --force -b "${BRANCH}" --name "${NAME}" "${URL}" "${MODULE_PATH}" || continue
-    done
-
-  git -C "${REPO_PATH}" submodule update --init --recursive
-}
-
 gitver() {
-  printf "%s-r%s.%s\n" "$(git rev-parse --abbrev-ref HEAD)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  local IS_DIRTY
+  if [ -z "$(git status --porcelain)" ]; then
+    IS_DIRTY=''
+  else
+    IS_DIRTY='-dirty'
+  fi
+  printf "%s-r%s.%s%s\n" "$(git rev-parse --abbrev-ref HEAD)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" $IS_DIRTY
 }
 
 ################################################################################
@@ -246,17 +234,18 @@ gitver() {
 
 condaInit() {
 # >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
+# !! Contents within this block are managed by 'micromamba shell init' !!
 export MAMBA_EXE='/usr/bin/micromamba';
 export MAMBA_ROOT_PREFIX='/home/k/.conda';
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
 else
-    alias micromamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+    alias micromamba="$MAMBA_EXE"  # Fallback on help from micromamba activate
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
-micromamba activate mm
+micromamba activate mmseg
 alias conda=micromamba
 }
+
