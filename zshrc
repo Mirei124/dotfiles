@@ -16,12 +16,13 @@ zinit wait lucid light-mode for \
   agkozak/zsh-z
 
 # omz
+# load history.zsh first to avoid zsh-autosuggestions not working on startup
+zinit snippet OMZ::lib/history.zsh
 zinit wait lucid light-mode for \
   OMZ::lib/async_prompt.zsh \
   OMZ::lib/clipboard.zsh \
   OMZ::lib/completion.zsh \
   OMZ::lib/git.zsh \
-  OMZ::lib/history.zsh \
   OMZ::lib/key-bindings.zsh \
   OMZ::lib/prompt_info_functions.zsh \
   OMZ::lib/theme-and-appearance.zsh \
@@ -36,15 +37,13 @@ zinit light junegunn/fzf
 
 # theme
 zinit ice wait"!" lucid
-zinit snippet OMZ::themes/steeef.zsh-theme
+zinit snippet "${HOME}/.neko.zsh-theme"
+# zinit snippet OMZ::themes/steeef.zsh-theme
 # zinit snippet OMZ::themes/ys.zsh-theme
 # zinit light dracula/zsh
 
 # zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 # zinit light sindresorhus/pure
-
-# steeef: 102:78 [%*] zcompile
-# vi .local/share/zinit/snippets/OMZ::themes/steeef.zsh-theme/steeef.zsh-theme
 
 # fast-theme -t XDG:catppuccin-mocha
 
