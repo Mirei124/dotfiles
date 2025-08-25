@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # KDE
 # echo 'Xft.dpi: 120' | xrdb -m

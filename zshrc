@@ -47,10 +47,11 @@ zinit snippet "${HOME}/.neko.zsh-theme"
 
 # fast-theme -t XDG:catppuccin-mocha
 
+# options
+REPORTTIME=5
+
 ################################################################################
 # custom
-
-REPORTTIME=5
 
 alias vi="nvim"
 alias stu="systemctl status"
