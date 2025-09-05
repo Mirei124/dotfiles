@@ -83,6 +83,7 @@ function add() {
 	mkdir -p $dest/etc/xdg
 	cp /etc/xdg/picom.conf $dest/etc/xdg/
 
+  cp $HOME/.neko.zsh-theme $dest/neko.zsh-theme
 }
 
 add

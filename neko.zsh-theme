@@ -24,7 +24,7 @@ if [[ $terminfo[colors] -ge 256 ]]; then
   RED='%F{210}'
   GREEN='%F{121}'
   YELLOW='%F{222}'
-  BLUE='%F{111}'
+  BLUE='%F{153}'
   MAGENTA='%F{218}'
   CYAN='%F{123}'
   WHITE='%F{15}'

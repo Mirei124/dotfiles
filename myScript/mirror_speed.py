@@ -12,22 +12,21 @@ mirrorlist_url = "https://archlinux.org/mirrorlist/?country=CN&protocol=http&pro
 
 headers = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 "
-                  "Safari/537.36 Edg/103.0.1264.71 "
+    "Safari/537.36 Edg/103.0.1264.71 "
 }
 GET_TIMEOUT = 10
 DOWN_TIMEOUT = 30
 MAX_TIME = 999.0
 
 
-def get_package():
+def get_package() -> str:
     package = r"/archlinux/core/os/x86_64/glibc-{}-x86_64.pkg.tar.zst"
-    result = subprocess.run(['LC_ALL=C pacman -Si glibc'],
-                            capture_output=True, text=True, shell=True).stdout
-    version = re.search(r'Version +: ([\d.-]+)', result).group(1)
+    result = subprocess.run(["LC_ALL=C pacman -Si glibc"], capture_output=True, text=True, shell=True).stdout
+    version = re.search(r"Version +: (\S+)", result).group(1)  # pyright: ignore
     return package.format(version)
 
 
-def get_mirror_list():
+def get_mirror_list() -> list[str]:
     if os.path.exists("mirror_list.txt"):
         with open("mirror_list.txt", "r") as fp:
             mirrors = fp.readlines()
@@ -35,8 +34,7 @@ def get_mirror_list():
         return list(a)
 
     try:
-        resp = requests.get(url=mirrorlist_url,
-                            headers=headers, timeout=GET_TIMEOUT).text
+        resp = requests.get(url=mirrorlist_url, headers=headers, timeout=GET_TIMEOUT).text
         pattern = re.compile(r"#Server = (\S+)/archlinux")
         mirrors = re.findall(pattern, resp)
 
@@ -51,7 +49,7 @@ def get_mirror_list():
         exit(-1)
 
 
-def get_task(mirrors, times):
+def get_task(mirrors: list[str], times: int) -> dict[str, list[float]]:
     package = get_package()
     speed_result = dict()
     for t_n in range(times):
@@ -67,13 +65,12 @@ def get_task(mirrors, times):
     return speed_result
 
 
-def test_speed(url):
-    # if "163" in url:
-    #     return MAX_TIME
+def test_speed(url: str) -> float:
+    if "163" in url:
+        return MAX_TIME
     start = time.time()
     try:
-        resp = requests.get(url=url, headers=headers,
-                            timeout=GET_TIMEOUT, stream=True)
+        resp = requests.get(url=url, headers=headers, timeout=GET_TIMEOUT, stream=True)
         if resp.status_code == 200:
             try:
                 with eventlet.Timeout(DOWN_TIMEOUT):
@@ -81,7 +78,7 @@ def test_speed(url):
             except eventlet.Timeout:
                 return MAX_TIME
         else:
-            print('\033[91m' + " " * 6 + str(resp.status_code) + '\033[0m')
+            print("\033[91m" + " " * 6 + str(resp.status_code) + "\033[0m")
             return MAX_TIME
         stop = time.time()
     except Exception as e:
@@ -90,7 +87,7 @@ def test_speed(url):
     return stop - start
 
 
-def analyze_result(result):
+def analyze_result(result: dict[str, list[float]]) -> None:
     analyzed_result = {}
     for key, value in result.items():
         ave = sum(value) / len(value)
@@ -101,8 +98,7 @@ def analyze_result(result):
     sorted_result = sorted(analyzed_result.items(), key=lambda x: x[1][2])
     print("        MIRROR                          	 MIN 	 MAX 	 AVE ")
     for key, value in sorted_result:
-        print("{:40}\t{:.3f}\t{:.3f}\t{:.3f}".format(
-            key, value[0], value[1], value[2]))
+        print("{:40}\t{:.3f}\t{:.3f}\t{:.3f}".format(key, value[0], value[1], value[2]))
 
     print("\n" + ("=" * 70) + "\n")
     for key, _ in sorted_result:

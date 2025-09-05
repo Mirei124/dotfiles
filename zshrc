@@ -228,6 +228,14 @@ gitver() {
   printf "%s-r%s.%s%s\n" "$(git rev-parse --abbrev-ref HEAD)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" $IS_DIRTY
 }
 
+sshl() {
+  ssh -NTL $1:127.0.0.1:$1 $2 $3
+}
+
+sshr() {
+  ssh -NTR $1:127.0.0.1:$1 $2 $3
+}
+
 ################################################################################
 
 # source /opt/miniconda/etc/profile.d/conda.sh
